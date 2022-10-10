@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "387403185157",
+    "firebase_url": "https://lithe-key-251208.firebaseio.com",
+    "project_id": "lithe-key-251208",
+    "storage_bucket": "lithe-key-251208.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387403185157:android:98f7f882169aabf620b06c",
+        "android_client_info": {
+          "package_name": "com.Tatawwar.anjez"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387403185157-ia7tv1t0ik5it91epflvhhdha2ssmd4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyuIVT9vvpwNhEuC4q9qfDftww1TG_VA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387403185157-ia7tv1t0ik5it91epflvhhdha2ssmd4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387403185157:android:c267e94788e4fe2f20b06c",
+        "android_client_info": {
+          "package_name": "com.application.pharma_tawzeef"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387403185157-ia7tv1t0ik5it91epflvhhdha2ssmd4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyuIVT9vvpwNhEuC4q9qfDftww1TG_VA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387403185157-ia7tv1t0ik5it91epflvhhdha2ssmd4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387403185157:android:9951008d4eb5ca9220b06c",
+        "android_client_info": {
+          "package_name": "com.magdsoft.dardish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387403185157-nn3ebniohgbhf3hcka8rq41omf5nodhs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.magdsoft.dardish",
+            "certificate_hash": "d222ddea1cd422ff1cf9bbd23c47cfee37f04322"
+          }
+        },
+        {
+          "client_id": "387403185157-ia7tv1t0ik5it91epflvhhdha2ssmd4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyuIVT9vvpwNhEuC4q9qfDftww1TG_VA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387403185157-ia7tv1t0ik5it91epflvhhdha2ssmd4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
