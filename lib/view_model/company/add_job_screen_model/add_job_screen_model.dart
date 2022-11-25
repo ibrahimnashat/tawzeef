@@ -138,7 +138,7 @@ class AddJobScreenModel extends ChangeNotifier {
         context: context,
         onSeccuss: (res, message) {
           Loader.dismiss(context);
-          if (loginType.userType == UserType.officer) {
+          if (loginType.userType == UserType.pharmacist) {
             context.pushAndRemoveUntil(const OfficerHomeScreen());
           } else {
             context.pushAndRemoveUntil(const CompanyHomeScreen());

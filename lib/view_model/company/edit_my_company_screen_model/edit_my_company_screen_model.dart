@@ -14,9 +14,9 @@ class EditMyCompanyScreenModel extends ChangeNotifier {
   CountryModel? country;
   CityModel? city;
   StateModel? state;
-  final List<CountryModel> countries = [];
-  final List<StateModel> states = [];
-  final List<CityModel> cities = [];
+  List<CountryModel> countries = [];
+  List<StateModel> states = [];
+  List<CityModel> cities = [];
   final editCompanyServices = EditCompanyProfileServices();
   final countryServices = GetCountriesServices();
   final stateServices = GetStatesServices();
@@ -39,7 +39,8 @@ class EditMyCompanyScreenModel extends ChangeNotifier {
     await getCountries(context);
   }
 
-  Future<void> editCompanyProfile(BuildContext context) async {
+  Future<void> editCompanyProfile(
+      BuildContext context, Function afterEdit) async {
     if (email.text != localSavingData.logUser.email ||
         phone.text != localSavingData.logUser.phone ||
         name.text != localSavingData.logUser.name ||
@@ -75,6 +76,7 @@ class EditMyCompanyScreenModel extends ChangeNotifier {
           Loader.dismiss(context);
           Toast.showOnSuccessfully(context, message);
           localSavingData.loggedUser(res.user!.toJson());
+          afterEdit();
         },
         onError: (status, error) {
           Toast.showOnError(context, error);
@@ -105,8 +107,10 @@ class EditMyCompanyScreenModel extends ChangeNotifier {
       context: context,
       onSeccuss: (res, message) {
         if (res.country != null) {
-          countries.addAll(res.country!);
-          states.clear();
+          countries = res.country ?? [];
+          states = [];
+          cities = [];
+          city = null;
           state = null;
           notifyListeners();
         }
@@ -124,8 +128,8 @@ class EditMyCompanyScreenModel extends ChangeNotifier {
       context: context,
       onSeccuss: (res, message) {
         if (res.state != null) {
-          states.addAll(res.state!);
-          cities.clear();
+          states = res.state ?? [];
+          cities = [];
           city = null;
           notifyListeners();
         }
@@ -143,7 +147,7 @@ class EditMyCompanyScreenModel extends ChangeNotifier {
       context: context,
       onSeccuss: (res, message) {
         if (res.city != null) {
-          cities.addAll(res.city!);
+          cities = res.city ?? [];
           notifyListeners();
         }
       },

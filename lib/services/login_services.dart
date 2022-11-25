@@ -13,6 +13,7 @@ class LoginServices {
     required String password,
     String? fCMToken,
     String? lang,
+    String? type,
     required Function(LoginResponse, String) onSeccuss,
     required Function(int, String) onError,
   }) async {
@@ -23,6 +24,7 @@ class LoginServices {
       onError: onError,
       onSeccuss: onSeccuss,
       request: LoginRequest(
+        type: type,
         email: email,
         password: password,
         fCMToken: fCMToken,

@@ -29,7 +29,8 @@ class AppLocalizations {
   String get needHelp => Intl.message("Need help?", name: "needHelp");
   String get forgetPassword =>
       Intl.message("Forget Password", name: "forgetPassword");
-  String get newable => Intl.message("Newbie?", name: "newable");
+  String get newable =>
+      Intl.message("Do not have an account?", name: "newable");
   String get createAccount =>
       Intl.message("Create Account", name: "createAccount");
   String get pharmacist => Intl.message("Pharmacist", name: "pharmacist");

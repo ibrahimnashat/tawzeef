@@ -4,7 +4,11 @@ import 'package:tawzeef/models/objects/country_model.dart';
 import 'package:tawzeef/models/objects/state_model.dart';
 
 class EditCompanyScreen extends StatefulWidget {
-  const EditCompanyScreen({Key? key}) : super(key: key);
+  final Function afterEditation;
+  const EditCompanyScreen({
+    Key? key,
+    required this.afterEditation,
+  }) : super(key: key);
 
   @override
   State<EditCompanyScreen> createState() => _EditCompanyScreenState();
@@ -36,7 +40,7 @@ class _EditCompanyScreenState extends State<EditCompanyScreen> {
                     .mPadding(
                       start: spaces.space21,
                     )
-                    .mAddAction(onTap: () => context.pop()),
+                    .mAddAction(onTap: widget.afterEditation),
               ),
               Align(
                 alignment: Alignment.center,
@@ -321,7 +325,8 @@ class _EditCompanyScreenState extends State<EditCompanyScreen> {
             return MBouncingButton(
               title: context.localization?.save,
               color: coolors.primaryColor,
-              onTap: () => controller.editCompanyProfile(context),
+              onTap: () =>
+                  controller.editCompanyProfile(context, widget.afterEditation),
             );
           }),
         ],

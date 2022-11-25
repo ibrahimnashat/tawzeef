@@ -157,7 +157,8 @@ class _AddLinksScreenState extends State<AddLinksScreen> {
             return MBouncingButton(
               title: context.localization?.save,
               color: coolors.primaryColor,
-              onTap: () => controller.editCompanyProfile(context),
+              onTap: () =>
+                  controller.editCompanyProfile(context, () => context.pop()),
             );
           }),
         ],

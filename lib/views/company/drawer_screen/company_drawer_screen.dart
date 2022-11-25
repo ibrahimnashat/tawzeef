@@ -65,12 +65,17 @@ class _CompanyDrawerScreenState extends State<CompanyDrawerScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        MText(
-                          text: "${context.localization?.hi} ,",
-                          fontFamily: foontFamily.tajawalBold,
-                          fontColor: coolors.primaryColor,
-                          fontSize: foontSize.font20,
-                        ),
+                        Consumer(builder: (context, ref, child) {
+                          final controller = ref.watch(
+                              ChangeNotifierProvider((ref) => localSavingData));
+                          return MText(
+                            text:
+                                "${context.localization?.hi}, ${controller.logUser.name}",
+                            fontFamily: foontFamily.tajawalBold,
+                            fontColor: coolors.primaryColor,
+                            fontSize: foontSize.font20,
+                          );
+                        }),
                         MText(
                           text: context.localization?.welcomeBack,
                           fontFamily: foontFamily.tajawalBold,

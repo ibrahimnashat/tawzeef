@@ -50,7 +50,7 @@ class Url {
   final String changeUserApplicationStatus = "company/changeUserJob";
 
   String inCase(String endPoint) {
-    if (loginType.userType == UserType.company) return 'company$endPoint';
+    if (loginType.userType == UserType.pharmacy) return 'company$endPoint';
     return 'user$endPoint';
   }
 

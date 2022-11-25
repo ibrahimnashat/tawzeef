@@ -4,7 +4,11 @@ import 'package:tawzeef/models/objects/country_model.dart';
 import 'package:tawzeef/models/objects/state_model.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({Key? key}) : super(key: key);
+  final Function afterEditation;
+  const EditProfileScreen({
+    Key? key,
+    required this.afterEditation,
+  }) : super(key: key);
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
@@ -36,7 +40,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     .mPadding(
                       start: spaces.space21,
                     )
-                    .mAddAction(onTap: () => context.pop()),
+                    .mAddAction(onTap: widget.afterEditation),
               ),
               Align(
                 alignment: Alignment.center,
@@ -347,7 +351,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             return MBouncingButton(
               title: context.localization?.save,
               color: coolors.primaryColor,
-              onTap: () => controller.editProfile(context),
+              onTap: () =>
+                  controller.editProfile(context, widget.afterEditation),
             );
           }),
         ],

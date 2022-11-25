@@ -29,7 +29,7 @@ class FCMNotificationModel extends ChangeNotifier {
 
   void onClick() {
     if (localSavingData.logUser.email != null) {
-      if (loginType.userType == UserType.officer) {
+      if (loginType.userType == UserType.pharmacist) {
         navigatorKey.currentState!.push(MaterialPageRoute(
             builder: ((context) => const OfficerNotificationScreen())));
       } else {

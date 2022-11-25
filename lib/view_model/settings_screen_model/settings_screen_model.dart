@@ -23,7 +23,7 @@ class SettingsScreenModel extends ChangeNotifier {
         Loader.dismiss(context);
         locale = Locale(lang);
         delegate = SpecificLocalizationsDelegate(locale);
-        if (loginType.userType == UserType.officer) {
+        if (loginType.userType == UserType.pharmacist) {
           context.pushAndRemoveUntil(const OfficerHomeScreen());
         } else {
           context.pushAndRemoveUntil(const CompanyHomeScreen());

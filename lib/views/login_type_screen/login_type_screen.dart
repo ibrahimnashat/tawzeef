@@ -21,7 +21,7 @@ class LoginTypeScreen extends StatelessWidget {
               ),
               MBouncingButton(
                 icon: svgs.person,
-                onTap: () => loginType.setOfficerUserType(context),
+                onTap: () => loginType.setPharmacistUserType(context),
                 title: context.localization?.pharmacist,
                 width: 280,
                 height: 65,
@@ -31,7 +31,7 @@ class LoginTypeScreen extends StatelessWidget {
               ).mPadding(bottom: spaces.space30),
               MBouncingButton(
                 icon: svgs.pharmacy,
-                onTap: () => loginType.setCompanyUserType(context),
+                onTap: () => loginType.setPharmacyUserType(context),
                 title: context.localization?.pharmacy,
                 width: 280,
                 height: 65,

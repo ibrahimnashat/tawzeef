@@ -27,9 +27,9 @@ class CompanyHomeScreenModel extends ChangeNotifier {
   CityModel? city;
   List<UserModel> currentUsers = [];
   final List<UserModel> _users = [];
-  final List<CountryModel> countries = [];
-  final List<StateModel> states = [];
-  final List<CityModel> cities = [];
+  List<CountryModel> countries = [];
+  List<StateModel> states = [];
+  List<CityModel> cities = [];
   final homeUsersServices = GetCompanyHomeUsersServices();
   final searchJobsServices = CompanySearchUsersServices();
   final countryServices = GetCountriesServices();
@@ -104,7 +104,7 @@ class CompanyHomeScreenModel extends ChangeNotifier {
           currentUsers = _users;
           page++;
         }
-        isLastPage = true;
+        isLastPage = _users.length % 20 != 0;
         notifyListeners();
       },
       onError: (status, message) {},
@@ -117,9 +117,9 @@ class CompanyHomeScreenModel extends ChangeNotifier {
       context: context,
       onSeccuss: (res, message) {
         if (res.country != null) {
-          countries.addAll(res.country!);
-          states.clear();
-          cities.clear();
+          countries = res.country ?? [];
+          states = [];
+          cities = [];
           state = null;
           city = null;
           notifyListeners();
@@ -138,8 +138,8 @@ class CompanyHomeScreenModel extends ChangeNotifier {
       context: context,
       onSeccuss: (res, message) {
         if (res.state != null) {
-          states.addAll(res.state!);
-          cities.clear();
+          states = res.state ?? [];
+          cities = [];
           city = null;
           notifyListeners();
         }
@@ -157,7 +157,7 @@ class CompanyHomeScreenModel extends ChangeNotifier {
       context: context,
       onSeccuss: (res, message) {
         if (res.city != null) {
-          cities.addAll(res.city!);
+          cities = res.city ?? [];
           notifyListeners();
         }
       },

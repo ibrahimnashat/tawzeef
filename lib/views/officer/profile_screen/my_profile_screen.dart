@@ -134,8 +134,11 @@ class MyProfileScreen extends StatelessWidget {
                                 color: coolors.black,
                                 height: 30,
                               ).mPadding(all: spaces.space12).mAddAction(
-                                    onTap: () =>
-                                        context.push(const EditProfileScreen()),
+                                    onTap: () => context.push(
+                                      EditProfileScreen(
+                                        afterEditation: () => context.pop(),
+                                      ),
+                                    ),
                                   ),
                             ],
                           ),

@@ -55,9 +55,9 @@ class LocalSavingDataModel extends ChangeNotifier {
   Future<void> _afterPrefAsync() async {
     try {
       logUser = UserModel.fromJson(_getObject('logUser'));
-      loginType.userType = UserType.company.name == _get('userType')
-          ? UserType.company
-          : UserType.officer;
+      loginType.userType = UserType.pharmacist.name == _get('userType')
+          ? UserType.pharmacist
+          : UserType.pharmacy;
     } catch (e) {
       debuggerPrint(e);
     }

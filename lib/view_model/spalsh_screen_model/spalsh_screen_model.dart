@@ -4,7 +4,7 @@ class SplashScreenModel extends ChangeNotifier {
   void disposeScreen(BuildContext context) {
     Future.delayed(const Duration(seconds: 2), () {
       if (localSavingData.logUser.name != null) {
-        if (loginType.userType == UserType.officer) {
+        if (loginType.userType == UserType.pharmacist) {
           context.pushAndRemoveUntil(const OfficerHomeScreen());
         } else {
           context.pushAndRemoveUntil(const CompanyHomeScreen());

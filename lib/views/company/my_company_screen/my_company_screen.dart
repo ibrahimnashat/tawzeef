@@ -92,8 +92,12 @@ class MyCompanyScreen extends StatelessWidget {
                                       top: spaces.space24,
                                     )
                                     .mAddAction(
-                                        onTap: () => context
-                                            .push(const EditCompanyScreen())),
+                                      onTap: () => context.push(
+                                        EditCompanyScreen(
+                                          afterEditation: () => context.pop(),
+                                        ),
+                                      ),
+                                    ),
                               ],
                             ),
                           ),

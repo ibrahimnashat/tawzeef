@@ -42,7 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "needHelp": MessageLookupByLibrary.simpleMessage('Need help?'),
         "forgetPassword":
             MessageLookupByLibrary.simpleMessage('Forget Password'),
-        "newable": MessageLookupByLibrary.simpleMessage('Newbie?'),
+        "newable":
+            MessageLookupByLibrary.simpleMessage('Do not have an account?'),
         "createAccount": MessageLookupByLibrary.simpleMessage('Create Account'),
         "pharmacist": MessageLookupByLibrary.simpleMessage('Pharmacist'),
         "pharmacy": MessageLookupByLibrary.simpleMessage('Pharmacy'),

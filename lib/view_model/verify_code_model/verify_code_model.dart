@@ -1,4 +1,5 @@
 import 'package:tawzeef/controller/consts/exports.dart';
+import 'package:tawzeef/models/objects/user_model.dart';
 import 'package:tawzeef/services/verify_code_services.dart';
 
 class VerifyCodeScreenModel extends ChangeNotifier {
@@ -31,10 +32,10 @@ class VerifyCodeScreenModel extends ChangeNotifier {
               ),
             );
           } else {
-            if (loginType.userType == UserType.company) {
-              context.push(const CompanyHomeScreen());
-            } else if (loginType.userType == UserType.officer) {
-              context.push(const OfficerHomeScreen());
+            if (loginType.userType == UserType.pharmacist) {
+              _onPharmacistTypeOpen(context, localSavingData.logUser);
+            } else {
+              _onPharmacyOrCompanyTypeOpen(context, localSavingData.logUser);
             }
           }
           Toast.showOnSuccessfully(context, message);
@@ -44,6 +45,41 @@ class VerifyCodeScreenModel extends ChangeNotifier {
           Toast.showOnError(context, message);
         },
       );
+    }
+  }
+
+  void _onPharmacyOrCompanyTypeOpen(
+      BuildContext context, UserModel loggedUser) {
+    if (loggedUser.image == null ||
+        loggedUser.city == null ||
+        loggedUser.country == null ||
+        loggedUser.description == null ||
+        loggedUser.noOfEmployees == null) {
+      context.push(
+        EditCompanyScreen(
+          afterEditation: () =>
+              context.pushAndRemoveUntil(const CompanyHomeScreen()),
+        ),
+      );
+    } else {
+      context.push(const CompanyHomeScreen());
+    }
+  }
+
+  void _onPharmacistTypeOpen(BuildContext context, UserModel loggedUser) {
+    if (loggedUser.image == null ||
+        loggedUser.city == null ||
+        loggedUser.country == null ||
+        loggedUser.education == null ||
+        loggedUser.cv == null) {
+      context.push(
+        EditProfileScreen(
+          afterEditation: () =>
+              context.pushAndRemoveUntil(const OfficerHomeScreen()),
+        ),
+      );
+    } else {
+      context.push(const OfficerHomeScreen());
     }
   }
 }

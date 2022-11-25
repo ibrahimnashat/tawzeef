@@ -28,9 +28,9 @@ class OfficerHomeScreenModel extends ChangeNotifier {
   List<JobModel> currentJobs = [];
   final List<JobModel> _jobs = [];
   final List<JobTitleModel> jobTitles = [];
-  final List<CountryModel> countries = [];
-  final List<StateModel> states = [];
-  final List<CityModel> cities = [];
+  List<CountryModel> countries = [];
+  List<StateModel> states = [];
+  List<CityModel> cities = [];
   final List<AdModel> ads = [];
   final homeJobsServices = GetOfficerHomeJobsServices();
   final jobTitlesServices = GetJobTitlesServices();
@@ -104,7 +104,7 @@ class OfficerHomeScreenModel extends ChangeNotifier {
       page: page,
       context: context,
       onSeccuss: (res, message) {
-        if (res.jobs!.isNotEmpty) {
+        if (res.jobs?.isNotEmpty ?? false) {
           res.jobs?.forEach((element) {
             if (!_jobs.contains(element)) _jobs.add(element);
           });
@@ -113,10 +113,8 @@ class OfficerHomeScreenModel extends ChangeNotifier {
           });
           currentJobs = _jobs;
           page++;
-          isLastPage = false;
-        } else {
-          isLastPage = true;
         }
+        isLastPage = _jobs.length % 20 != 0;
         notifyListeners();
       },
       onError: (status, message) {},
@@ -140,9 +138,9 @@ class OfficerHomeScreenModel extends ChangeNotifier {
       context: context,
       onSeccuss: (res, message) {
         if (res.country != null) {
-          countries.addAll(res.country!);
-          states.clear();
-          cities.clear();
+          countries = res.country ?? [];
+          states = [];
+          cities = [];
           state = null;
           city = null;
           notifyListeners();
@@ -161,8 +159,8 @@ class OfficerHomeScreenModel extends ChangeNotifier {
       context: context,
       onSeccuss: (res, message) {
         if (res.state != null) {
-          states.addAll(res.state!);
-          cities.clear();
+          states = res.state ?? [];
+          cities = [];
           city = null;
           notifyListeners();
         }
@@ -180,7 +178,7 @@ class OfficerHomeScreenModel extends ChangeNotifier {
       context: context,
       onSeccuss: (res, message) {
         if (res.city != null) {
-          cities.addAll(res.city!);
+          cities = res.city ?? [];
           notifyListeners();
         }
       },
