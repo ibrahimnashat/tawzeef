@@ -67,7 +67,7 @@ export 'package:tawzeef/repository/models/objects/degree_level_model.dart';
 export 'package:tawzeef/repository/models/objects/profile_education_model.dart';
 
 //api
-export 'package:tawzeef/repository/services/api.dart';
+export 'package:tawzeef/repository/api.dart';
 
 //request
 export 'package:tawzeef/repository/models/requests/change_language_request.dart';
