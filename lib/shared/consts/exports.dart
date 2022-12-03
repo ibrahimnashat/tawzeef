@@ -1,4 +1,4 @@
-//shared widgets
+//---- shared widgets ----
 export '../widgets/image.dart';
 export '../widgets/buttons.dart';
 export '../widgets/widget.dart';
@@ -12,7 +12,7 @@ export '../widgets/drop_down.dart';
 export '../widgets/loader.dart';
 export '../widgets/strings.dart';
 
-//consts
+//---- consts ----
 export 'package:tawzeef/shared/consts/colors.dart';
 export 'package:tawzeef/shared/consts/font_families.dart';
 export 'package:tawzeef/shared/consts/font_sizes.dart';
@@ -21,7 +21,7 @@ export 'package:tawzeef/shared/consts/spaces.dart';
 export 'package:tawzeef/shared/consts/svgs.dart';
 export 'package:tawzeef/shared/consts/url.dart';
 
-//packages
+//---- packages ----
 export 'dart:io';
 export 'dart:convert';
 export 'package:flutter/material.dart';
@@ -50,7 +50,7 @@ export 'package:url_launcher/url_launcher.dart';
 export 'package:paginated_list/paginated_list.dart';
 export 'package:fcm_config/fcm_config.dart';
 
-//models
+//---- models ----
 export 'package:tawzeef/repository/models/objects/ad_model.dart';
 export 'package:tawzeef/repository/models/objects/city_model.dart';
 export 'package:tawzeef/repository/models/objects/country_model.dart';
@@ -66,10 +66,10 @@ export 'package:tawzeef/repository/models/objects/notification_model.dart';
 export 'package:tawzeef/repository/models/objects/degree_level_model.dart';
 export 'package:tawzeef/repository/models/objects/profile_education_model.dart';
 
-//api
+//---- api ----
 export 'package:tawzeef/repository/api.dart';
 
-//request
+//---- request ----
 export 'package:tawzeef/repository/models/requests/change_language_request.dart';
 export 'package:tawzeef/repository/models/requests/get_career_level_request.dart';
 export 'package:tawzeef/repository/models/requests/change_password_request.dart';
@@ -109,7 +109,7 @@ export 'package:tawzeef/repository/models/requests/get_my_jobs_request.dart';
 export 'package:tawzeef/repository/models/requests/get_users_of_job_request.dart';
 export 'package:tawzeef/repository/models/requests/saving_list_request.dart';
 
-//response
+//---- response ----
 export 'package:tawzeef/repository/models/responses/change_password_response.dart';
 export 'package:tawzeef/repository/models/responses/get_career_level_response.dart';
 export 'package:tawzeef/repository/models/responses/change_language_response.dart';
@@ -149,7 +149,7 @@ export 'package:tawzeef/repository/models/responses/get_my_job_list_response.dar
 export 'package:tawzeef/repository/models/responses/get_users_of_job_response.dart';
 export 'package:tawzeef/repository/models/responses/saving_list_response.dart';
 
-//services
+//---- services ----
 export 'package:tawzeef/repository/services/verify_code_services.dart';
 export 'package:tawzeef/repository/services/pharmacist_services/apply_job_services.dart';
 export 'package:tawzeef/repository/services/pharmacist_services/get_job_services.dart';
@@ -182,7 +182,7 @@ export 'package:tawzeef/repository/services/company_or_pharmacy_services/change_
 export 'package:tawzeef/repository/services/company_or_pharmacy_services/get_users_of_job_services.dart';
 export 'package:tawzeef/repository/services/company_or_pharmacy_services/get_my_jobs_services.dart';
 
-//views
+//---- views ----
 //---- max view of company or pharmacy and pharmacist ----
 export 'package:tawzeef/views/splash_screen/splash_screen.dart';
 export 'package:tawzeef/views/choose_language_screen/chooseLanguage_screen.dart';
@@ -192,7 +192,8 @@ export 'package:tawzeef/views/sign_up_screen/sign_up_screen.dart';
 export 'package:tawzeef/views/verify_screen/verify_code_screen.dart';
 export 'package:tawzeef/views/forget_password_screen/forget_password_screen.dart';
 export 'package:tawzeef/views/reset_password_screen/reset_password_screen.dart';
-//---- company ----
+
+//---- company or pharmacy ----
 export 'package:tawzeef/views/company_or_pharmacy_veiw_section/comapny_or_pharmacy_home_screen/company_or_pharmacy_home_screen.dart';
 export 'package:tawzeef/views/company_or_pharmacy_veiw_section/comapny_or_pharmacy_home_screen/company_or_pharmacy_fitler_screen.dart';
 export 'package:tawzeef/views/company_or_pharmacy_veiw_section/comapny_or_pharmacy_drawer_screen/company_or_pharmacy_drawer_screen.dart';
@@ -207,7 +208,8 @@ export 'package:tawzeef/views/company_or_pharmacy_veiw_section/my_company_or_pha
 export 'package:tawzeef/views/company_or_pharmacy_veiw_section/edit_company_or_pharmacy_screen/add_links_screen.dart';
 export 'package:tawzeef/views/company_or_pharmacy_veiw_section/edit_company_or_pharmacy_screen/edit_company_or_pharmacy_screen.dart';
 export 'package:tawzeef/views/company_or_pharmacy_veiw_section/change_password_screen/company_change_password_screen.dart';
-//---- officer ----
+
+//---- pharmacist ----
 export 'package:tawzeef/views/pharmacist_view_section/pharmacist_home_screen/pharmacist_fitler_screen.dart';
 export 'package:tawzeef/views/pharmacist_view_section/pharmacist_home_screen/pharmacist_home_screen.dart';
 export 'package:tawzeef/views/pharmacist_view_section/pharmacist_notification_screen/pharmacist_notification_screen.dart';
@@ -222,22 +224,22 @@ export 'package:tawzeef/views/pharmacist_view_section/edit_profile_screen/edit_p
 export 'package:tawzeef/views/pharmacist_view_section/edit_profile_screen/edit_education_screen.dart';
 export 'package:tawzeef/views/pharmacist_view_section/job_details_screen/widgets/alert_successfully_item.dart';
 
-//view models
-
-//---- max company and offcier ----
+//---- view models ----
+//---- max company or pharmacy and pharmacist ----
 export 'package:tawzeef/view_model/spalsh_screen_model/spalsh_screen_model.dart';
 export 'package:tawzeef/view_model/login_type_screen_model/login_type_screen_model.dart';
 export 'package:tawzeef/view_model/login_screen_model/login_screen_model.dart';
 export 'package:tawzeef/view_model/register_screen_model/register_screen_model.dart';
-export 'package:tawzeef/view_model/local_saving_data_model/local_saving_data_model.dart';
+export 'package:tawzeef/view_model/general_model_section/local_storage_model/local_storage_model.dart';
 export 'package:tawzeef/view_model/settings_screen_model/settings_screen_model.dart';
 export 'package:tawzeef/view_model/change_password_screen_model/change_password_screen_model.dart';
-export 'package:tawzeef/view_model/fcm_notification_model/fcm_notification_model.dart';
+export 'package:tawzeef/view_model/general_model_section/fcm_notification_model/fcm_notification_model.dart';
 export 'package:tawzeef/view_model/forget_password_model/forget_password_model.dart';
 export 'package:tawzeef/view_model/reset_password_model/reset_password_model.dart';
 export 'package:tawzeef/view_model/verify_code_model/verify_code_model.dart';
-export 'package:tawzeef/view_model/url_model/url_model.dart';
-//---- officer ----
+export 'package:tawzeef/view_model/general_model_section/url_launcher_model/url_launcher_model.dart';
+
+//---- pharmacist ----
 export 'package:tawzeef/view_model/pharmacist_model_section/pharmacist_home_screen_model/pharmacist_home_screen_model.dart';
 export 'package:tawzeef/view_model/pharmacist_model_section/edit_profile_screen_model/edit_profile_screen_model.dart';
 export 'package:tawzeef/view_model/pharmacist_model_section/edit_profile_screen_model/edit_education_screen_model.dart';
@@ -247,7 +249,7 @@ export 'package:tawzeef/view_model/pharmacist_model_section/saving_jobs_screen_m
 export 'package:tawzeef/view_model/pharmacist_model_section/pharmacist_drawer_screen_model/pharmacist_drawer_screen_model.dart';
 export 'package:tawzeef/view_model/pharmacist_model_section/pharmacist_notification_screen_model/pharmacist_notification_screen_model.dart';
 
-//---- company ----
+//---- company or pharmacy ----
 export 'package:tawzeef/view_model/company_or_pharmacy_model_section/my_job_screen_model/my_job_item_model.dart';
 export 'package:tawzeef/view_model/company_or_pharmacy_model_section/company_or_pharmacy_home_screen_model/company_or_pharmacy_home_screen_model.dart';
 export 'package:tawzeef/view_model/company_or_pharmacy_model_section/add_job_screen_model/add_job_screen_model.dart';
