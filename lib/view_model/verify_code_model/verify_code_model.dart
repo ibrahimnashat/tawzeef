@@ -1,6 +1,4 @@
-import 'package:tawzeef/controller/consts/exports.dart';
-import 'package:tawzeef/models/objects/user_model.dart';
-import 'package:tawzeef/services/verify_code_services.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 class VerifyCodeScreenModel extends ChangeNotifier {
   String _code = '';
@@ -56,13 +54,13 @@ class VerifyCodeScreenModel extends ChangeNotifier {
         loggedUser.description == null ||
         loggedUser.noOfEmployees == null) {
       context.push(
-        EditCompanyScreen(
+        EditCompanyOrPharmacyScreen(
           afterEditation: () =>
-              context.pushAndRemoveUntil(const CompanyHomeScreen()),
+              context.pushAndRemoveUntil(const CompanyOrPharmacyHomeScreen()),
         ),
       );
     } else {
-      context.push(const CompanyHomeScreen());
+      context.push(const CompanyOrPharmacyHomeScreen());
     }
   }
 
@@ -75,11 +73,11 @@ class VerifyCodeScreenModel extends ChangeNotifier {
       context.push(
         EditProfileScreen(
           afterEditation: () =>
-              context.pushAndRemoveUntil(const OfficerHomeScreen()),
+              context.pushAndRemoveUntil(const PharmacistHomeScreen()),
         ),
       );
     } else {
-      context.push(const OfficerHomeScreen());
+      context.push(const PharmacistHomeScreen());
     }
   }
 }

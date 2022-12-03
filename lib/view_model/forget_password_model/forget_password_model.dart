@@ -1,5 +1,5 @@
-import 'package:tawzeef/controller/consts/exports.dart';
-import 'package:tawzeef/services/forget_password_services.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
+import 'package:tawzeef/repository/services/forget_password_services.dart';
 
 class ForgetPasswordScreenModel extends ChangeNotifier {
   final email = TextEditingController();

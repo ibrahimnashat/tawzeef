@@ -1,4 +1,4 @@
-import 'package:tawzeef/controller/consts/exports.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);

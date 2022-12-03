@@ -1,4 +1,4 @@
-import 'package:tawzeef/controller/consts/exports.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 UrlModel urlModel = UrlModel._private();
 

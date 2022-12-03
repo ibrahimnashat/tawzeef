@@ -1,4 +1,4 @@
-import 'package:tawzeef/controller/consts/exports.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 import 'package:tawzeef/main.dart';
 
 Future<void> _onMessagingBackground(RemoteMessage message) async {
@@ -31,10 +31,11 @@ class FCMNotificationModel extends ChangeNotifier {
     if (localSavingData.logUser.email != null) {
       if (loginType.userType == UserType.pharmacist) {
         navigatorKey.currentState!.push(MaterialPageRoute(
-            builder: ((context) => const OfficerNotificationScreen())));
+            builder: ((context) => const PharmacistNotificationScreen())));
       } else {
         navigatorKey.currentState!.push(MaterialPageRoute(
-            builder: ((context) => const CompanyNotificationScreen())));
+            builder: ((context) =>
+                const CompanyOrPharmacyNotificationScreen())));
       }
     } else {
       navigatorKey.currentState!.push(

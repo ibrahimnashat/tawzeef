@@ -1,6 +1,6 @@
-import 'package:tawzeef/controller/consts/exports.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
-import 'package:tawzeef/services/change_password_services.dart';
+import 'package:tawzeef/repository/services/change_password_services.dart';
 
 class ChangePasswordScreenModel extends ChangeNotifier {
   final changePasswordServices = ChangePasswordServices();

@@ -1,6 +1,6 @@
-import 'package:tawzeef/controller/consts/exports.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
-import 'package:tawzeef/services/reset_password_services.dart';
+import 'package:tawzeef/repository/services/reset_password_services.dart';
 
 class ResetPasswordScreenModel extends ChangeNotifier {
   final resetPasswordServices = ResetPasswordServices();

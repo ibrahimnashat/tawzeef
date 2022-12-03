@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:tawzeef/controller/consts/exports.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 class ChooseLanguageScreen extends StatelessWidget {
   ChooseLanguageScreen({Key? key}) : super(key: key) {

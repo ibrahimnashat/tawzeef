@@ -1,6 +1,6 @@
-import 'package:tawzeef/controller/consts/exports.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 import 'package:tawzeef/languages/localizations.dart';
-import 'package:tawzeef/services/change_language_services.dart';
+import 'package:tawzeef/repository/services/change_language_services.dart';
 
 SettingsScreenModel settings = SettingsScreenModel._private();
 
@@ -24,9 +24,9 @@ class SettingsScreenModel extends ChangeNotifier {
         locale = Locale(lang);
         delegate = SpecificLocalizationsDelegate(locale);
         if (loginType.userType == UserType.pharmacist) {
-          context.pushAndRemoveUntil(const OfficerHomeScreen());
+          context.pushAndRemoveUntil(const PharmacistHomeScreen());
         } else {
-          context.pushAndRemoveUntil(const CompanyHomeScreen());
+          context.pushAndRemoveUntil(const CompanyOrPharmacyHomeScreen());
         }
         localSavingData.storeLanguage(lang);
         notifyListeners();
