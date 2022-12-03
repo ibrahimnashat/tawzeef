@@ -1,6 +1,6 @@
 import 'package:tawzeef/shared/consts/exports.dart';
 
-enum UserType { pharmacy, pharmacist, company }
+enum UserType { pharmacy, company, pharmacist }
 
 LoginTypeScreenModel loginType = LoginTypeScreenModel._private();
 

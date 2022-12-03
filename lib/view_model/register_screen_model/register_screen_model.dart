@@ -37,6 +37,7 @@ class RegisterScreenModel extends ChangeNotifier {
           context.pushReplacement(VerifyCodeScreen());
           Toast.showOnSuccessfully(context, message);
           await localStorage.loggedUser(res.user!.toJson());
+          await localStorage.storeUserType(loginType.userType);
         },
         onError: (status, message) {
           Loader.dismiss(context);
