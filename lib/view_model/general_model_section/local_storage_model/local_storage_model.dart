@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:tawzeef/shared/consts/exports.dart';
 
-LocalSavingDataModel localStorage = LocalSavingDataModel._private();
+LocalStorageModel localStorage = LocalStorageModel._private();
 
-class LocalSavingDataModel extends ChangeNotifier {
+class LocalStorageModel extends ChangeNotifier {
   late UserModel logUser;
   String get language => _get('lang') == '' ? 'en' : _get('lang');
   bool get chooseLanguageIsOpened =>
@@ -75,7 +75,7 @@ class LocalSavingDataModel extends ChangeNotifier {
     log(object.toString());
   }
 
-  LocalSavingDataModel._private() {
+  LocalStorageModel._private() {
     getPref();
   }
 }

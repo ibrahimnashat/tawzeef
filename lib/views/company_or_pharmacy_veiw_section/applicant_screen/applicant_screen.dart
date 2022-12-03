@@ -166,7 +166,7 @@ class ApplicantScreen extends StatelessWidget {
                             child: MBouncingButton(
                               title: context.localization?.openCv,
                               color: coolors.primaryColor,
-                              onTap: () => urlModel.openUrl(
+                              onTap: () => urlLauncher.openUrl(
                                 context: context,
                                 url: user?.cv,
                               ),

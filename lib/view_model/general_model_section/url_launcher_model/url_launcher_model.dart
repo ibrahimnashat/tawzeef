@@ -1,8 +1,8 @@
 import 'package:tawzeef/shared/consts/exports.dart';
 
-UrlModel urlModel = UrlModel._private();
+UrlLauncherModel urlLauncher = UrlLauncherModel._private();
 
-class UrlModel extends ChangeNotifier {
+class UrlLauncherModel extends ChangeNotifier {
   Future<void> openUrl({
     String? url = '',
     required BuildContext context,
@@ -20,5 +20,5 @@ class UrlModel extends ChangeNotifier {
     }
   }
 
-  UrlModel._private();
+  UrlLauncherModel._private();
 }

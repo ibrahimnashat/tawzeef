@@ -211,7 +211,7 @@ class MyCompanyOrPharmacyScreen extends StatelessWidget {
                               children: [
                                 MIconButton(
                                   icon: svgs.website,
-                                  onTap: () => urlModel.openUrl(
+                                  onTap: () => urlLauncher.openUrl(
                                     context: context,
                                     url: localStorage.logUser.website,
                                   ),
@@ -219,7 +219,7 @@ class MyCompanyOrPharmacyScreen extends StatelessWidget {
                                 ).mPadding(horizontal: spaces.space21),
                                 MIconButton(
                                   icon: svgs.linkedin,
-                                  onTap: () => urlModel.openUrl(
+                                  onTap: () => urlLauncher.openUrl(
                                     context: context,
                                     url: localStorage.logUser.linkedin,
                                   ),
@@ -227,7 +227,7 @@ class MyCompanyOrPharmacyScreen extends StatelessWidget {
                                 ),
                                 MIconButton(
                                   icon: svgs.facebook,
-                                  onTap: () => urlModel.openUrl(
+                                  onTap: () => urlLauncher.openUrl(
                                     context: context,
                                     url: localStorage.logUser.facebook,
                                   ),
@@ -235,7 +235,7 @@ class MyCompanyOrPharmacyScreen extends StatelessWidget {
                                 ).mPadding(horizontal: spaces.space21),
                                 MIconButton(
                                   icon: svgs.twitter,
-                                  onTap: () => urlModel.openUrl(
+                                  onTap: () => urlLauncher.openUrl(
                                     context: context,
                                     url: localStorage.logUser.twitter,
                                   ),
