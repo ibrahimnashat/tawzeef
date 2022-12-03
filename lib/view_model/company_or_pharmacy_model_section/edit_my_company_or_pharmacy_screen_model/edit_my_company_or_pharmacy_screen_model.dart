@@ -32,23 +32,23 @@ class EditMyCompanyOrPharnamcyScreenModel extends ChangeNotifier {
 
   Future<void> editCompanyProfile(
       BuildContext context, Function afterEdit) async {
-    if (email.text != localSavingData.logUser.email ||
-        phone.text != localSavingData.logUser.phone ||
-        name.text != localSavingData.logUser.name ||
-        email.text != localSavingData.logUser.email ||
-        description.text != localSavingData.logUser.description ||
-        noOfEmployees.text != localSavingData.logUser.noOfEmployees ||
-        facebook.text != localSavingData.logUser.facebook ||
-        linkedin.text != localSavingData.logUser.linkedin ||
-        twitter.text != localSavingData.logUser.twitter ||
-        website.text != localSavingData.logUser.website ||
+    if (email.text != localStorage.logUser.email ||
+        phone.text != localStorage.logUser.phone ||
+        name.text != localStorage.logUser.name ||
+        email.text != localStorage.logUser.email ||
+        description.text != localStorage.logUser.description ||
+        noOfEmployees.text != localStorage.logUser.noOfEmployees ||
+        facebook.text != localStorage.logUser.facebook ||
+        linkedin.text != localStorage.logUser.linkedin ||
+        twitter.text != localStorage.logUser.twitter ||
+        website.text != localStorage.logUser.website ||
         city != null ||
         country != null ||
         state != null ||
         profileImg != null) {
       Loader.show(context: context);
       await editCompanyServices.editProfile(
-        apiToken: localSavingData.logUser.apiToken!,
+        apiToken: localStorage.logUser.apiToken!,
         img: profileImg,
         cityId: city?.id,
         countryId: country?.id,
@@ -66,7 +66,7 @@ class EditMyCompanyOrPharnamcyScreenModel extends ChangeNotifier {
         onSeccuss: (res, message) {
           Loader.dismiss(context);
           Toast.showOnSuccessfully(context, message);
-          localSavingData.loggedUser(res.user!.toJson());
+          localStorage.loggedUser(res.user!.toJson());
           afterEdit();
         },
         onError: (status, error) {
@@ -94,7 +94,7 @@ class EditMyCompanyOrPharnamcyScreenModel extends ChangeNotifier {
 
   Future<void> getCountries(BuildContext context) async {
     await countryServices.getCountries(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       context: context,
       onSeccuss: (res, message) {
         if (res.country != null) {
@@ -114,7 +114,7 @@ class EditMyCompanyOrPharnamcyScreenModel extends ChangeNotifier {
 
   Future<void> getStates(BuildContext context) async {
     await stateServices.getStates(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       countryId: country!.id!,
       context: context,
       onSeccuss: (res, message) {
@@ -133,7 +133,7 @@ class EditMyCompanyOrPharnamcyScreenModel extends ChangeNotifier {
 
   Future<void> getCities(BuildContext context) async {
     await cityServices.getCities(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       stateId: state!.id!,
       context: context,
       onSeccuss: (res, message) {

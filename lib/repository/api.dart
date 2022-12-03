@@ -15,8 +15,8 @@ class Api<T, G> {
     required Function(T response, String message) onSeccuss,
     Map<String, String> headers = const {},
   }) async {
-    localSavingData.debuggerPrint(urls.base + endpoint);
-    localSavingData.debuggerPrint(toJson(request));
+    localStorage.printForRequest(urls.base + endpoint);
+    localStorage.printForRequest(toJson(request));
     final value = await http.post(
       Uri.parse(urls.base + endpoint),
       body: toJson(request),
@@ -56,8 +56,8 @@ class Api<T, G> {
         api.fields[e.key] = e.value;
       }
     }
-    localSavingData.debuggerPrint(api.fields);
-    localSavingData.debuggerPrint(api.files);
+    localStorage.printForRequest(api.fields);
+    localStorage.printForRequest(api.files);
     api.headers[HttpHeaders.acceptHeader] = 'application/json';
     final res = await api.send();
     var value = await http.Response.fromStream(res);

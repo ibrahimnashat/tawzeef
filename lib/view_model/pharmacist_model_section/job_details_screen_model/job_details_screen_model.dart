@@ -18,7 +18,7 @@ class JobDetailsScreenModel extends ChangeNotifier {
     await viewJobServices.viewJob(
       jobId: jobId,
       onSeccuss: (res, message) {
-        localSavingData.debuggerPrint('$message viewed');
+        localStorage.printForRequest('$message viewed');
       },
       onError: (status, message) {},
     );
@@ -26,7 +26,7 @@ class JobDetailsScreenModel extends ChangeNotifier {
 
   Future<void> _getJob(int jobId) async {
     await jobSerives.getJob(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       jobId: jobId,
       onSeccuss: (res, message) {
         applyingCount = res.applyingCount ?? 0;
@@ -44,7 +44,7 @@ class JobDetailsScreenModel extends ChangeNotifier {
   ) async {
     Loader.show(context: context);
     await saveJobServices.saveJob(
-      apiToken: localSavingData.logUser.apiToken,
+      apiToken: localStorage.logUser.apiToken,
       jobId: jobId,
       context: context,
       onSeccuss: (res, message) {
@@ -66,7 +66,7 @@ class JobDetailsScreenModel extends ChangeNotifier {
   ) async {
     Loader.show(context: context);
     await applyJobServices.applyJob(
-      apiToken: localSavingData.logUser.apiToken,
+      apiToken: localStorage.logUser.apiToken,
       jobId: jobId,
       context: context,
       onSeccuss: (res, message) {

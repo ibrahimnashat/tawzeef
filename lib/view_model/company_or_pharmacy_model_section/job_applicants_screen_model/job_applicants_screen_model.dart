@@ -39,7 +39,7 @@ class JobApplicantsScreenModel extends ChangeNotifier {
     notifyListeners();
     await jobApplicantsServices.getUsersOfJob(
       context: context,
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       jobId: jobId,
       status: status,
       onSeccuss: (res, message) {
@@ -59,7 +59,7 @@ class JobApplicantsScreenModel extends ChangeNotifier {
   Future<void> changeJobStatus(BuildContext context, status, int userId) async {
     Loader.show(context: context);
     await changeUserStatus.changeStatus(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       jobId: jobId,
       status: status,
       context: context,

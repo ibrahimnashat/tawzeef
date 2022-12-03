@@ -10,7 +10,7 @@ class CompanyOrPharnamcyNotificationsScreenModel extends ChangeNotifier {
 
   Future<void> _getCompnayNotifications(BuildContext context) async {
     await getNotificationsServices.getCompnayNotifications(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       onSeccuss: (res, message) {
         notifications = res.notifications!;
         isLoading = false;

@@ -3,7 +3,7 @@ import 'shared/consts/exports.dart';
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await localSavingData.getPref();
+  await localStorage.getPref();
   await fCMNotification.onIntialization();
   runApp(const TawzeefApp());
 }

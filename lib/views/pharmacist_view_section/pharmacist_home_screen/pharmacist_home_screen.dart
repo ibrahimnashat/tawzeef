@@ -99,7 +99,7 @@ class _PharmacistHomeScreenState extends State<PharmacistHomeScreen> {
                         ),
                         Consumer(builder: (context, ref, child) {
                           final controller = ref.watch(
-                              ChangeNotifierProvider((ref) => localSavingData));
+                              ChangeNotifierProvider((ref) => localStorage));
                           return MText(
                             text:
                                 "${controller.logUser.name?.split(" ").first}",

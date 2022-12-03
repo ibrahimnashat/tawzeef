@@ -10,7 +10,7 @@ FCMNotificationModel fCMNotification = FCMNotificationModel._private();
 class FCMNotificationModel extends ChangeNotifier {
   Future<String?> getFCMToken() async {
     final value = await FCMConfig.instance.messaging.getToken();
-    localSavingData.debuggerPrint('FCMToken: $value');
+    localStorage.print('FCMToken: $value');
     return value;
   }
 
@@ -28,7 +28,7 @@ class FCMNotificationModel extends ChangeNotifier {
   }
 
   void onClick() {
-    if (localSavingData.logUser.email != null) {
+    if (localStorage.logUser.email != null) {
       if (loginType.userType == UserType.pharmacist) {
         navigatorKey.currentState!.push(MaterialPageRoute(
             builder: ((context) => const PharmacistNotificationScreen())));

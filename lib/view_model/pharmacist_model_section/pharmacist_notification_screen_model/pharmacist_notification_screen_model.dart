@@ -10,7 +10,7 @@ class PharmacistNotificationsScreenModel extends ChangeNotifier {
 
   Future<void> _getOfficerNotifications(BuildContext context) async {
     await getNotificationsServices.getOfficerNotifications(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       onSeccuss: (res, message) {
         notifications = res.notifications!;
         isLoading = false;

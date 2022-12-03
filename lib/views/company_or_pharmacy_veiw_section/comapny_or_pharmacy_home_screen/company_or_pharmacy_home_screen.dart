@@ -46,7 +46,7 @@ class _CompanyOrPharmacyHomeScreenState
                       children: [
                         Consumer(builder: (context, ref, child) {
                           final controller = ref.watch(
-                              ChangeNotifierProvider((ref) => localSavingData));
+                              ChangeNotifierProvider((ref) => localStorage));
                           return MNetworkImage(
                             url: controller.logUser.image ?? '',
                             fit: BoxFit.cover,
@@ -74,7 +74,7 @@ class _CompanyOrPharmacyHomeScreenState
                         ),
                         Consumer(builder: (context, ref, child) {
                           final controller = ref.watch(
-                              ChangeNotifierProvider((ref) => localSavingData));
+                              ChangeNotifierProvider((ref) => localStorage));
                           return MText(
                             text:
                                 "${controller.logUser.name?.split(" ").first}",

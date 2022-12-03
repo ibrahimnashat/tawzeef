@@ -11,7 +11,7 @@ class PharmacistDrawerScreenModel extends ChangeNotifier {
 
   Future<void> _getOfficerNotificationsCount(BuildContext context) async {
     await getUnreadNotificationServices.getOfficerNotificationsCount(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       onSeccuss: (res, message) {
         unReadCount = res.count ?? 0;
         notifyListeners();

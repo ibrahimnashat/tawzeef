@@ -14,7 +14,7 @@ class ApplyingScreenModel extends ChangeNotifier {
   ) async {
     isLoading = true;
     await applyingJobsServices.getApplyingJobs(
-      apiToken: localSavingData.logUser.apiToken,
+      apiToken: localStorage.logUser.apiToken,
       context: context,
       onSeccuss: (res, message) {
         isLoading = false;

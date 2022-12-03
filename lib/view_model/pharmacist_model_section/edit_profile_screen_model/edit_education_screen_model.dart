@@ -16,7 +16,7 @@ class EditEducationScreenModel extends ChangeNotifier {
 
   EditEducationScreenModel(BuildContext context) {
     _getJobDegreeLevels(context);
-    final val = localSavingData.logUser.profileEducation;
+    final val = localStorage.logUser.profileEducation;
     if (val!.isNotEmpty) {
       education = val[0];
       if (education != null) degreeLevel = education?.degreeLevel;
@@ -44,13 +44,13 @@ class EditEducationScreenModel extends ChangeNotifier {
         grad: grad.text,
         startYear: startYear.text,
         university: university.text,
-        apiToken: localSavingData.logUser.apiToken ?? '',
+        apiToken: localStorage.logUser.apiToken ?? '',
         context: context,
         onSeccuss: (res, message) {
           Loader.dismiss(context);
           context.pop();
           Toast.showOnSuccessfully(context, message);
-          if (res.user != null) localSavingData.loggedUser(res.user!.toJson());
+          if (res.user != null) localStorage.loggedUser(res.user!.toJson());
         },
         onError: (status, error) {
           Toast.showOnError(context, error);
@@ -63,7 +63,7 @@ class EditEducationScreenModel extends ChangeNotifier {
 
   Future<void> _getJobDegreeLevels(BuildContext context) async {
     await degreeLevelsServices.getJobDegreeLevels(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       context: context,
       onSeccuss: (res, message) {
         degreeLevels.addAll(res.degreeLevels!);

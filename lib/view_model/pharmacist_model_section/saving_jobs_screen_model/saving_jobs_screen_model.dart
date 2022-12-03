@@ -15,7 +15,7 @@ class SavingScreenModel extends ChangeNotifier {
   ) async {
     isLoading = true;
     await savingJobsServices.getSaveingJobs(
-      apiToken: localSavingData.logUser.apiToken,
+      apiToken: localStorage.logUser.apiToken,
       context: context,
       onSeccuss: (res, message) {
         isLoading = false;
@@ -37,7 +37,7 @@ class SavingScreenModel extends ChangeNotifier {
   ) async {
     Loader.show(context: context);
     await saveJobServices.saveJob(
-      apiToken: localSavingData.logUser.apiToken,
+      apiToken: localStorage.logUser.apiToken,
       jobId: jobId,
       context: context,
       onSeccuss: (res, message) async {

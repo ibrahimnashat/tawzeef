@@ -7,7 +7,7 @@ SettingsScreenModel settings = SettingsScreenModel._private();
 class SettingsScreenModel extends ChangeNotifier {
   List options = [];
   Map inital = {};
-  late Locale locale = Locale(localSavingData.language);
+  late Locale locale = Locale(localStorage.language);
   late SpecificLocalizationsDelegate delegate =
       SpecificLocalizationsDelegate(locale);
   final changeLanguageServices = ChangeLanguageServices();
@@ -16,7 +16,7 @@ class SettingsScreenModel extends ChangeNotifier {
       {required BuildContext context, required String lang}) async {
     Loader.show(context: context);
     await changeLanguageServices.changeLanguage(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       type: loginType.userType.index == 0 ? 'company' : 'user',
       lang: lang,
       onSeccuss: (res, message) {
@@ -28,7 +28,7 @@ class SettingsScreenModel extends ChangeNotifier {
         } else {
           context.pushAndRemoveUntil(const CompanyOrPharmacyHomeScreen());
         }
-        localSavingData.storeLanguage(lang);
+        localStorage.storeLanguage(lang);
         notifyListeners();
       },
       onError: (status, error) {
@@ -42,7 +42,7 @@ class SettingsScreenModel extends ChangeNotifier {
     locale = Locale(lang);
     delegate = SpecificLocalizationsDelegate(locale);
     context.pushAndRemoveUntil(const LoginTypeScreen());
-    localSavingData.storeLanguage(lang);
+    localStorage.storeLanguage(lang);
     notifyListeners();
   }
 

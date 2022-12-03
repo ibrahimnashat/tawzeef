@@ -11,7 +11,7 @@ class CompanyOrPharnamcyDrawerScreenModel extends ChangeNotifier {
 
   Future<void> _getCompanyNotificationsCount(BuildContext context) async {
     await getUnreadNotificationServices.getCompanyNotificationsCount(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       onSeccuss: (res, message) {
         unReadCount = res.count ?? 0;
         notifyListeners();

@@ -31,12 +31,12 @@ class RegisterScreenModel extends ChangeNotifier {
         phone: phone.text,
         password: password.text,
         fCMToken: await fCMNotification.getFCMToken(),
-        lang: localSavingData.language,
+        lang: localStorage.language,
         onSeccuss: (res, message) async {
           Loader.dismiss(context);
           context.pushReplacement(VerifyCodeScreen());
           Toast.showOnSuccessfully(context, message);
-          await localSavingData.loggedUser(res.user!.toJson());
+          await localStorage.loggedUser(res.user!.toJson());
         },
         onError: (status, message) {
           Loader.dismiss(context);

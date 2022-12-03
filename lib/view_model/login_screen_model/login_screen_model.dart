@@ -13,7 +13,7 @@ class LoginScreenModel extends ChangeNotifier {
         email: email.text,
         password: password.text,
         fCMToken: await fCMNotification.getFCMToken(),
-        lang: localSavingData.language,
+        lang: localStorage.language,
         onSeccuss: (res, message) async {
           Loader.dismiss(context);
           final loggedUser = UserModel.fromJson(res.user!.toJson());
@@ -23,8 +23,8 @@ class LoginScreenModel extends ChangeNotifier {
             _onPharmacyOrCompanyTypeOpen(context, loggedUser);
           }
           Toast.showOnSuccessfully(context, message);
-          await localSavingData.storeUserType(loginType.userType);
-          await localSavingData.loggedUser(res.user!.toJson());
+          await localStorage.storeUserType(loginType.userType);
+          await localStorage.loggedUser(res.user!.toJson());
         },
         onError: (status, message) {
           Loader.dismiss(context);

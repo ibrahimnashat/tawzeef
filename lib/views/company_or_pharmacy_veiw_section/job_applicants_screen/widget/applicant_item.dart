@@ -13,7 +13,6 @@ class JobApplicantItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    localSavingData.debuggerPrint(user.toJson());
     return Column(
       children: [
         Row(

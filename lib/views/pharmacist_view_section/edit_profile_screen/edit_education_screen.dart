@@ -75,7 +75,7 @@ class _EditEducationScreenState extends State<EditEducationScreen> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: MNetworkImage(
-                                      url: localSavingData.logUser.image ?? '',
+                                      url: localStorage.logUser.image ?? '',
                                       fit: BoxFit.cover,
                                       borderRadius: 100,
                                       height: 150,

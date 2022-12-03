@@ -100,7 +100,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               );
                             }
                             return MNetworkImage(
-                              url: localSavingData.logUser.image ?? '',
+                              url: localStorage.logUser.image ?? '',
                               fit: BoxFit.cover,
                               borderRadius: 100,
                               height: 150,
@@ -127,7 +127,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   Consumer(builder: (context, ref, child) {
                     final controller = ref.watch(editProfileController);
                     return MTextFiled(
-                      hintText: localSavingData.logUser.name,
+                      hintText: localStorage.logUser.name,
                       controller: controller.name,
                       lableText: context.localization?.name,
                       textColor: coolors.primaryColor,
@@ -146,7 +146,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   Consumer(builder: (context, ref, child) {
                     final controller = ref.watch(editProfileController);
                     return MTextFiled(
-                      hintText: localSavingData.logUser.email,
+                      hintText: localStorage.logUser.email,
                       controller: controller.email,
                       lableText: context.localization?.email,
                       textColor: coolors.primaryColor,
@@ -165,7 +165,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   Consumer(builder: (context, ref, child) {
                     final controller = ref.watch(editProfileController);
                     return MTextFiled(
-                      hintText: localSavingData.logUser.phone,
+                      hintText: localStorage.logUser.phone,
                       controller: controller.phone,
                       lableText: context.localization?.phone,
                       textColor: coolors.primaryColor,
@@ -184,7 +184,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   Consumer(builder: (context, ref, child) {
                     final controller = ref.watch(editProfileController);
                     return MTextFiled(
-                      hintText: localSavingData.logUser.dateOfBirth,
+                      hintText: localStorage.logUser.dateOfBirth,
                       controller: controller.dateOfBirth,
                       lableText: context.localization?.dateOfBirth,
                       textColor: coolors.primaryColor,
@@ -223,7 +223,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           return MDropDown<CountryModel>(
                             itemTitle: (res) => res.country!,
                             setInitial: controller.country,
-                            hint: localSavingData.logUser.country?.country ??
+                            hint: localStorage.logUser.country?.country ??
                                 context.localization?.country,
                             dropdownColor: coolors.primaryColor,
                             iconColor: coolors.white,
@@ -250,7 +250,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           return MDropDown<StateModel>(
                             itemTitle: (res) => res.state!,
                             setInitial: controller.state,
-                            hint: localSavingData.logUser.state?.state ??
+                            hint: localStorage.logUser.state?.state ??
                                 context.localization?.state,
                             iconColor: coolors.white,
                             dropdownColor: coolors.primaryColor,
@@ -277,7 +277,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           return MDropDown<CityModel>(
                             itemTitle: (res) => res.city!,
                             setInitial: controller.city,
-                            hint: localSavingData.logUser.city?.city ??
+                            hint: localStorage.logUser.city?.city ??
                                 context.localization?.city,
                             iconColor: coolors.white,
                             dropdownColor: coolors.primaryColor,
@@ -326,7 +326,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         Center(
                           child: MBouncingButton(
                             borderRadius: 25,
-                            title: localSavingData.logUser.cv == null
+                            title: localStorage.logUser.cv == null
                                 ? context.localization?.yourCV
                                 : context.localization?.updateCV,
                             icon: svgs.upload,

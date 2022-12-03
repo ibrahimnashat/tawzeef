@@ -63,7 +63,7 @@ class PharmacistHomeScreenModel extends ChangeNotifier {
     if (country != null || city != null || state != null || jopTitle != null) {
       Loader.show(context: context);
       await searchJobsServices.searchJobs(
-        apiToken: localSavingData.logUser.apiToken ?? '',
+        apiToken: localStorage.logUser.apiToken ?? '',
         context: context,
         cityId: city?.id,
         countryId: country?.id,
@@ -88,7 +88,7 @@ class PharmacistHomeScreenModel extends ChangeNotifier {
 
   Future<void> getJobs(BuildContext context) async {
     homeJobsServices.homeJobs(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       page: page,
       context: context,
       onSeccuss: (res, message) {
@@ -111,7 +111,7 @@ class PharmacistHomeScreenModel extends ChangeNotifier {
 
   Future<void> getJobTitles(BuildContext context) async {
     await jobTitlesServices.getJobTitles(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       onSeccuss: (res, message) {
         jobTitles.addAll(res.job!);
         notifyListeners();
@@ -122,7 +122,7 @@ class PharmacistHomeScreenModel extends ChangeNotifier {
 
   Future<void> getCountries(BuildContext context) async {
     await countryServices.getCountries(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       context: context,
       onSeccuss: (res, message) {
         if (res.country != null) {
@@ -142,7 +142,7 @@ class PharmacistHomeScreenModel extends ChangeNotifier {
 
   Future<void> getStates(BuildContext context) async {
     await stateServices.getStates(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       countryId: country!.id!,
       context: context,
       onSeccuss: (res, message) {
@@ -161,7 +161,7 @@ class PharmacistHomeScreenModel extends ChangeNotifier {
 
   Future<void> getCities(BuildContext context) async {
     await cityServices.getCities(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       stateId: state!.id!,
       context: context,
       onSeccuss: (res, message) {

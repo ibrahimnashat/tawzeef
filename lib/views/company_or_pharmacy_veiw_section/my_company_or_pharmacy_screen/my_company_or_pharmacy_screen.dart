@@ -72,7 +72,7 @@ class MyCompanyOrPharmacyScreen extends StatelessWidget {
                                           builder: (context, ref, child) {
                                         final controller = ref.watch(
                                             ChangeNotifierProvider(
-                                                (ref) => localSavingData));
+                                                (ref) => localStorage));
                                         return MNetworkImage(
                                           url: controller.logUser.image ?? '',
                                           fit: BoxFit.cover,
@@ -111,7 +111,7 @@ class MyCompanyOrPharmacyScreen extends StatelessWidget {
                       decoration: BoxDecoration(color: coolors.white),
                       child: Consumer(builder: (context, ref, child) {
                         final controller = ref.watch(
-                            ChangeNotifierProvider((ref) => localSavingData));
+                            ChangeNotifierProvider((ref) => localStorage));
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -213,7 +213,7 @@ class MyCompanyOrPharmacyScreen extends StatelessWidget {
                                   icon: svgs.website,
                                   onTap: () => urlModel.openUrl(
                                     context: context,
-                                    url: localSavingData.logUser.website,
+                                    url: localStorage.logUser.website,
                                   ),
                                   iconColor: coolors.blue,
                                 ).mPadding(horizontal: spaces.space21),
@@ -221,7 +221,7 @@ class MyCompanyOrPharmacyScreen extends StatelessWidget {
                                   icon: svgs.linkedin,
                                   onTap: () => urlModel.openUrl(
                                     context: context,
-                                    url: localSavingData.logUser.linkedin,
+                                    url: localStorage.logUser.linkedin,
                                   ),
                                   iconColor: coolors.blue,
                                 ),
@@ -229,7 +229,7 @@ class MyCompanyOrPharmacyScreen extends StatelessWidget {
                                   icon: svgs.facebook,
                                   onTap: () => urlModel.openUrl(
                                     context: context,
-                                    url: localSavingData.logUser.facebook,
+                                    url: localStorage.logUser.facebook,
                                   ),
                                   iconColor: coolors.blue,
                                 ).mPadding(horizontal: spaces.space21),
@@ -237,7 +237,7 @@ class MyCompanyOrPharmacyScreen extends StatelessWidget {
                                   icon: svgs.twitter,
                                   onTap: () => urlModel.openUrl(
                                     context: context,
-                                    url: localSavingData.logUser.twitter,
+                                    url: localStorage.logUser.twitter,
                                   ),
                                   iconColor: coolors.blue,
                                 ),

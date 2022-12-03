@@ -10,7 +10,7 @@ class MyJobScreenModel extends ChangeNotifier {
 
   Future<void> getJobs(BuildContext context) async {
     await getJobsServices.getMyJobs(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       onSeccuss: (res, message) {
         isLoading = false;
         jobs.addAll(res.job!);

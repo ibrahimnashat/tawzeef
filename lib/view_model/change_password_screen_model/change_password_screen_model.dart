@@ -25,7 +25,7 @@ class ChangePasswordScreenModel extends ChangeNotifier {
       Loader.show(context: context);
       await changePasswordServices.changePassword(
         password: password.text,
-        apiToken: localSavingData.logUser.email!,
+        apiToken: localStorage.logUser.email!,
         context: context,
         onSeccuss: (res, message) {
           Loader.dismiss(context);

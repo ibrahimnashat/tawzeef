@@ -52,7 +52,7 @@ class _CompanyOrPharmacyDrawerScreenState
                       ),
                       child: Consumer(builder: (context, ref, child) {
                         final controller = ref.watch(
-                            ChangeNotifierProvider((ref) => localSavingData));
+                            ChangeNotifierProvider((ref) => localStorage));
                         return MNetworkImage(
                           url: controller.logUser.image ?? '',
                           fit: BoxFit.cover,
@@ -70,7 +70,7 @@ class _CompanyOrPharmacyDrawerScreenState
                       children: [
                         Consumer(builder: (context, ref, child) {
                           final controller = ref.watch(
-                              ChangeNotifierProvider((ref) => localSavingData));
+                              ChangeNotifierProvider((ref) => localStorage));
                           return MText(
                             text:
                                 "${context.localization?.hi}, ${controller.logUser.name}",
@@ -122,7 +122,7 @@ class _CompanyOrPharmacyDrawerScreenState
                 CompanyOrPharmacyDrawerItem(
                   icon: svgs.logout,
                   title: context.localization?.logOut,
-                  onTap: () => localSavingData.logOut(context),
+                  onTap: () => localStorage.logOut(context),
                 ),
                 MText(
                   text: context.localization?.followUs,

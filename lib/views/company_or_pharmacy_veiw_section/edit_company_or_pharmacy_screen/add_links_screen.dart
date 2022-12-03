@@ -76,7 +76,7 @@ class _AddLinksScreenState extends State<AddLinksScreen> {
                     final controller = ref.watch(editCompanyController);
                     return MTextFiled(
                       controller: controller.website,
-                      hintText: localSavingData.logUser.website,
+                      hintText: localStorage.logUser.website,
                       lableText: context.localization?.website,
                       textColor: coolors.primaryColor,
                       border: UnderlineInputBorder(
@@ -95,7 +95,7 @@ class _AddLinksScreenState extends State<AddLinksScreen> {
                     final controller = ref.watch(editCompanyController);
                     return MTextFiled(
                       controller: controller.linkedin,
-                      hintText: localSavingData.logUser.linkedin,
+                      hintText: localStorage.logUser.linkedin,
                       lableText: context.localization?.linkedin,
                       textColor: coolors.primaryColor,
                       border: UnderlineInputBorder(
@@ -114,7 +114,7 @@ class _AddLinksScreenState extends State<AddLinksScreen> {
                     final controller = ref.watch(editCompanyController);
                     return MTextFiled(
                       controller: controller.facebook,
-                      hintText: localSavingData.logUser.facebook,
+                      hintText: localStorage.logUser.facebook,
                       lableText: context.localization?.facebook,
                       textColor: coolors.primaryColor,
                       border: UnderlineInputBorder(
@@ -133,7 +133,7 @@ class _AddLinksScreenState extends State<AddLinksScreen> {
                     final controller = ref.watch(editCompanyController);
                     return MTextFiled(
                       controller: controller.twitter,
-                      hintText: localSavingData.logUser.twitter,
+                      hintText: localStorage.logUser.twitter,
                       lableText: context.localization?.twitter,
                       textColor: coolors.primaryColor,
                       border: UnderlineInputBorder(

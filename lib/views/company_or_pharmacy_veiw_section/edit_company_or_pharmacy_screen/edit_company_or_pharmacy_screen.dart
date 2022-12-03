@@ -102,7 +102,7 @@ class _EditCompanyOrPharmacyScreenState
                               );
                             }
                             return MNetworkImage(
-                              url: localSavingData.logUser.image ?? '',
+                              url: localStorage.logUser.image ?? '',
                               fit: BoxFit.cover,
                               borderRadius: 100,
                               height: 150,
@@ -130,7 +130,7 @@ class _EditCompanyOrPharmacyScreenState
                     final controller = ref.watch(editCompanyController);
                     return MTextFiled(
                       controller: controller.name,
-                      hintText: localSavingData.logUser.name,
+                      hintText: localStorage.logUser.name,
                       lableText: context.localization?.companyName,
                       textColor: coolors.primaryColor,
                       border: UnderlineInputBorder(
@@ -149,7 +149,7 @@ class _EditCompanyOrPharmacyScreenState
                     final controller = ref.watch(editCompanyController);
                     return MTextFiled(
                       controller: controller.email,
-                      hintText: localSavingData.logUser.email,
+                      hintText: localStorage.logUser.email,
                       lableText: context.localization?.email,
                       textColor: coolors.primaryColor,
                       border: UnderlineInputBorder(
@@ -168,7 +168,7 @@ class _EditCompanyOrPharmacyScreenState
                     final controller = ref.watch(editCompanyController);
                     return MTextFiled(
                       controller: controller.phone,
-                      hintText: localSavingData.logUser.phone,
+                      hintText: localStorage.logUser.phone,
                       lableText: context.localization?.phone,
                       textColor: coolors.primaryColor,
                       border: UnderlineInputBorder(
@@ -188,7 +188,7 @@ class _EditCompanyOrPharmacyScreenState
                     return MTextFiled(
                       lableText: context.localization?.noOfEmployees,
                       controller: controller.noOfEmployees,
-                      hintText: localSavingData.logUser.noOfEmployees,
+                      hintText: localStorage.logUser.noOfEmployees,
                       textColor: coolors.primaryColor,
                       keyboardType: TextInputType.number,
                       border: UnderlineInputBorder(
@@ -212,7 +212,7 @@ class _EditCompanyOrPharmacyScreenState
                     final controller = ref.watch(editCompanyController);
                     return MTextFiled(
                       controller: controller.description,
-                      hintText: localSavingData.logUser.description,
+                      hintText: localStorage.logUser.description,
                       textColor: coolors.primaryColor,
                       paddingHorizontal: spaces.space12,
                       border: OutlineInputBorder(
@@ -246,7 +246,7 @@ class _EditCompanyOrPharmacyScreenState
                           return MDropDown<CountryModel>(
                             itemTitle: (res) => res.country!,
                             setInitial: controller.country,
-                            hint: localSavingData.logUser.country?.country ??
+                            hint: localStorage.logUser.country?.country ??
                                 context.localization?.country,
                             dropdownColor: coolors.primaryColor,
                             iconColor: coolors.white,
@@ -273,7 +273,7 @@ class _EditCompanyOrPharmacyScreenState
                           return MDropDown<StateModel>(
                             itemTitle: (res) => res.state!,
                             setInitial: controller.state,
-                            hint: localSavingData.logUser.state?.state ??
+                            hint: localStorage.logUser.state?.state ??
                                 context.localization?.state,
                             iconColor: coolors.white,
                             dropdownColor: coolors.primaryColor,
@@ -300,7 +300,7 @@ class _EditCompanyOrPharmacyScreenState
                           return MDropDown<CityModel>(
                             itemTitle: (res) => res.city!,
                             setInitial: controller.city,
-                            hint: localSavingData.logUser.city?.city ??
+                            hint: localStorage.logUser.city?.city ??
                                 context.localization?.city,
                             iconColor: coolors.white,
                             dropdownColor: coolors.primaryColor,

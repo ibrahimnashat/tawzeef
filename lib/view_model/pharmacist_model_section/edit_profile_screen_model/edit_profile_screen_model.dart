@@ -27,11 +27,11 @@ class EditProfileScreenModel extends ChangeNotifier {
   }
 
   Future<void> editProfile(BuildContext context, Function afterEdit) async {
-    if (email.text != localSavingData.logUser.email ||
-        phone.text != localSavingData.logUser.phone ||
-        name.text != localSavingData.logUser.name ||
-        email.text != localSavingData.logUser.email ||
-        dateOfBirth.text != localSavingData.logUser.dateOfBirth ||
+    if (email.text != localStorage.logUser.email ||
+        phone.text != localStorage.logUser.phone ||
+        name.text != localStorage.logUser.name ||
+        email.text != localStorage.logUser.email ||
+        dateOfBirth.text != localStorage.logUser.dateOfBirth ||
         city != null ||
         country != null ||
         state != null ||
@@ -39,7 +39,7 @@ class EditProfileScreenModel extends ChangeNotifier {
         cvPdf != null) {
       Loader.show(context: context);
       await editProfileServices.editProfile(
-        apiToken: localSavingData.logUser.apiToken!,
+        apiToken: localStorage.logUser.apiToken!,
         cv: cvPdf,
         img: profileImg,
         cityId: city?.id,
@@ -53,7 +53,7 @@ class EditProfileScreenModel extends ChangeNotifier {
         onSeccuss: (res, message) {
           Loader.dismiss(context);
           Toast.showOnSuccessfully(context, message);
-          localSavingData.loggedUser(res.user!.toJson());
+          localStorage.loggedUser(res.user!.toJson());
           afterEdit();
         },
         onError: (status, error) {
@@ -102,7 +102,7 @@ class EditProfileScreenModel extends ChangeNotifier {
 
   Future<void> getCountries(BuildContext context) async {
     await countryServices.getCountries(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       context: context,
       onSeccuss: (res, message) {
         if (res.country != null) {
@@ -122,7 +122,7 @@ class EditProfileScreenModel extends ChangeNotifier {
 
   Future<void> getStates(BuildContext context) async {
     await stateServices.getStates(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       countryId: country!.id!,
       context: context,
       onSeccuss: (res, message) {
@@ -141,7 +141,7 @@ class EditProfileScreenModel extends ChangeNotifier {
 
   Future<void> getCities(BuildContext context) async {
     await cityServices.getCities(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       stateId: state!.id!,
       context: context,
       onSeccuss: (res, message) {

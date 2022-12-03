@@ -18,7 +18,7 @@ class VerifyCodeScreenModel extends ChangeNotifier {
       Loader.show(context: context);
       await verifyCodeServices.verifyCode(
         code: _code,
-        apiToken: localSavingData.logUser.apiToken,
+        apiToken: localStorage.logUser.apiToken,
         email: email,
         context: context,
         onSeccuss: (res, message) {
@@ -31,9 +31,9 @@ class VerifyCodeScreenModel extends ChangeNotifier {
             );
           } else {
             if (loginType.userType == UserType.pharmacist) {
-              _onPharmacistTypeOpen(context, localSavingData.logUser);
+              _onPharmacistTypeOpen(context, localStorage.logUser);
             } else {
-              _onPharmacyOrCompanyTypeOpen(context, localSavingData.logUser);
+              _onPharmacyOrCompanyTypeOpen(context, localStorage.logUser);
             }
           }
           Toast.showOnSuccessfully(context, message);

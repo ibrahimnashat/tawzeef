@@ -1,6 +1,8 @@
+import 'dart:developer';
+
 import 'package:tawzeef/shared/consts/exports.dart';
 
-LocalSavingDataModel localSavingData = LocalSavingDataModel._private();
+LocalSavingDataModel localStorage = LocalSavingDataModel._private();
 
 class LocalSavingDataModel extends ChangeNotifier {
   late UserModel logUser;
@@ -27,7 +29,7 @@ class LocalSavingDataModel extends ChangeNotifier {
   }
 
   Future<void> loggedUser(Map<String, dynamic> data) async {
-    debuggerPrint(data);
+    print(data);
     await _storeObject(data, 'logUser');
     logUser = UserModel.fromJson(data);
     notifyListeners();
@@ -56,7 +58,7 @@ class LocalSavingDataModel extends ChangeNotifier {
           ? UserType.pharmacist
           : UserType.pharmacy;
     } catch (e) {
-      debuggerPrint(e);
+      print(e);
     }
   }
 
@@ -65,8 +67,12 @@ class LocalSavingDataModel extends ChangeNotifier {
     await loggedUser({});
   }
 
-  void debuggerPrint(Object object) {
+  void print(Object object) {
     debugPrint(object.toString());
+  }
+
+  void printForRequest(Object object) {
+    log(object.toString());
   }
 
   LocalSavingDataModel._private() {

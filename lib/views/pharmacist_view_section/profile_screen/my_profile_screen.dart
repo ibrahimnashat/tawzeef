@@ -68,7 +68,7 @@ class MyProfileScreen extends StatelessWidget {
                                       Consumer(builder: (context, ref, child) {
                                     final controller = ref.watch(
                                         ChangeNotifierProvider(
-                                            (ref) => localSavingData));
+                                            (ref) => localStorage));
                                     return MNetworkImage(
                                       url: controller.logUser.image ?? '',
                                       fit: BoxFit.cover,
@@ -99,7 +99,7 @@ class MyProfileScreen extends StatelessWidget {
                               Consumer(builder: (context, ref, child) {
                                 final controller = ref.watch(
                                     ChangeNotifierProvider(
-                                        (ref) => localSavingData));
+                                        (ref) => localStorage));
                                 return Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -166,7 +166,7 @@ class MyProfileScreen extends StatelessWidget {
                                       Consumer(builder: (context, ref, child) {
                                         final controller = ref.watch(
                                             ChangeNotifierProvider(
-                                                (ref) => localSavingData));
+                                                (ref) => localStorage));
                                         return Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -217,7 +217,7 @@ class MyProfileScreen extends StatelessWidget {
                               color: coolors.primaryColor,
                               onTap: () => urlModel.openUrl(
                                 context: context,
-                                url: localSavingData.logUser.cv,
+                                url: localStorage.logUser.cv,
                               ),
                             ),
                           )

@@ -4,7 +4,7 @@ import 'package:tawzeef/shared/consts/exports.dart';
 
 class ChooseLanguageScreen extends StatelessWidget {
   ChooseLanguageScreen({Key? key}) : super(key: key) {
-    localSavingData.chooseLanguageOpened();
+    localStorage.chooseLanguageOpened();
   }
   final ChangeNotifierProvider<SettingsScreenModel> settingsController =
       ChangeNotifierProvider<SettingsScreenModel>((ref) => settings);

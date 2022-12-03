@@ -62,7 +62,7 @@ class AddJobScreenModel extends ChangeNotifier {
         jobTitle != null) {
       Loader.show(context: context);
       await addJobServices.addJob(
-        apiToken: localSavingData.logUser.apiToken ?? '',
+        apiToken: localStorage.logUser.apiToken ?? '',
         careerLevelId: careerLevel?.id,
         countryId: country?.id,
         stateId: state?.id,
@@ -104,7 +104,7 @@ class AddJobScreenModel extends ChangeNotifier {
       Loader.show(context: context);
       await editJobServices.editJob(
         jobId: jobId,
-        apiToken: localSavingData.logUser.apiToken ?? '',
+        apiToken: localStorage.logUser.apiToken ?? '',
         careerLevelId: careerLevel?.id,
         countryId: country?.id,
         stateId: state?.id,
@@ -176,7 +176,7 @@ class AddJobScreenModel extends ChangeNotifier {
 
   Future<void> getJobExperience(BuildContext context) async {
     await jobExperienceServices.getJobExperience(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       onSeccuss: (res, message) {
         jobExperiences.addAll(res.jobExperience!);
         notifyListeners();
@@ -189,7 +189,7 @@ class AddJobScreenModel extends ChangeNotifier {
 
   Future<void> getJobTitle(BuildContext context) async {
     await getJobTitleServices.getJobTitles(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       onSeccuss: (res, message) {
         jobTitles.addAll(res.job!);
         notifyListeners();
@@ -202,7 +202,7 @@ class AddJobScreenModel extends ChangeNotifier {
 
   Future<void> getJobTypes(BuildContext context) async {
     await jobTypesServices.jobTypes(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       onSeccuss: (res, message) {
         jobTypes.addAll(res.jobTypes!);
         notifyListeners();
@@ -215,7 +215,7 @@ class AddJobScreenModel extends ChangeNotifier {
 
   Future<void> getCareerLevels(BuildContext context) async {
     await careerLevelsServices.getCareerLevels(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       onSeccuss: (res, message) {
         careerLevels.addAll(res.careerLevels!);
         notifyListeners();
@@ -228,7 +228,7 @@ class AddJobScreenModel extends ChangeNotifier {
 
   Future<void> getJobShifts(BuildContext context) async {
     await jobShiftsServices.jobShifts(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       onSeccuss: (res, message) {
         jobShifts.addAll(res.jobShifts!);
         notifyListeners();
@@ -241,7 +241,7 @@ class AddJobScreenModel extends ChangeNotifier {
 
   Future<void> getCountries(BuildContext context) async {
     await countryServices.getCountries(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       context: context,
       onSeccuss: (res, message) {
         if (res.country != null) {
@@ -259,7 +259,7 @@ class AddJobScreenModel extends ChangeNotifier {
 
   Future<void> getStates(BuildContext context) async {
     await stateServices.getStates(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       countryId: country!.id!,
       context: context,
       onSeccuss: (res, message) {
@@ -278,7 +278,7 @@ class AddJobScreenModel extends ChangeNotifier {
 
   Future<void> getCities(BuildContext context) async {
     await cityServices.getCities(
-      apiToken: localSavingData.logUser.apiToken ?? '',
+      apiToken: localStorage.logUser.apiToken ?? '',
       stateId: state!.id!,
       context: context,
       onSeccuss: (res, message) {
