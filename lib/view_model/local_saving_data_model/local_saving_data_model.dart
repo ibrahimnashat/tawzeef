@@ -1,7 +1,4 @@
-import 'dart:convert';
-
-import 'package:tawzeef/controller/consts/exports.dart';
-import 'package:tawzeef/models/objects/user_model.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 LocalSavingDataModel localSavingData = LocalSavingDataModel._private();
 

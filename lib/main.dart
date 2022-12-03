@@ -1,6 +1,4 @@
-import 'package:responsive_framework/responsive_framework.dart';
-
-import 'controller/consts/exports.dart';
+import 'shared/consts/exports.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
