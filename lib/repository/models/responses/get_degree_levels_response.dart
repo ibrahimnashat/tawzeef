@@ -1,4 +1,4 @@
-import 'package:tawzeef/repository/models/objects/degree_level_model.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 class GetDegreeLevelsResponse {
   int? status;

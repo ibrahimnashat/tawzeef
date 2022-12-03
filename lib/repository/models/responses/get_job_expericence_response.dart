@@ -1,4 +1,4 @@
-import 'package:tawzeef/repository/models/objects/job_experience_model.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 class GetJobExperienceResponse {
   int? status;

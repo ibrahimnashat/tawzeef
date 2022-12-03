@@ -1,5 +1,4 @@
-import 'package:tawzeef/repository/models/objects/ad_model.dart';
-import 'package:tawzeef/repository/models/objects/job_model.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 class PharmacistHomeResponse {
   int? status;

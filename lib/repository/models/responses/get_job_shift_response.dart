@@ -1,4 +1,4 @@
-import 'package:tawzeef/repository/models/objects/job_shift_model.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 class GetJobShiftResponse {
   int? status;

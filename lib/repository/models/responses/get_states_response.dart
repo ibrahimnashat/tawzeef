@@ -1,4 +1,4 @@
-import 'package:tawzeef/repository/models/objects/state_model.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 class GetStatesResponse {
   int? status;

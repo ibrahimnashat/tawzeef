@@ -1,4 +1,4 @@
-import 'package:tawzeef/repository/models/objects/career_level_model.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 class GetCareerLevelResponse {
   int? status;

@@ -1,4 +1,4 @@
-import 'package:tawzeef/repository/models/objects/job_type_model.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 class GetJobTypesResponse {
   int? status;

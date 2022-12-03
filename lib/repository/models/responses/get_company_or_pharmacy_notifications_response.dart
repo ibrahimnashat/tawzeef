@@ -1,4 +1,4 @@
-import 'package:tawzeef/repository/models/objects/notification_model.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 class GetCompanyOrPharmacyNotificationsResponse {
   int? status;

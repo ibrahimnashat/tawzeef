@@ -1,4 +1,4 @@
-import 'package:tawzeef/repository/models/objects/user_model.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 class RegisterResponse {
   int? status;
