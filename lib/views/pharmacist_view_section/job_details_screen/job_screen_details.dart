@@ -47,7 +47,6 @@ class JobScreenDetailsScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-
                     if (job?.status == 'apply')
                       MSvg(
                         name: svgs.correctCheck,
@@ -61,11 +60,6 @@ class JobScreenDetailsScreen extends StatelessWidget {
                       MSvg(
                         name: svgs.reject,
                       )
-                    // MSvg(
-                    //   name: svgs.share,
-                    //   width: 32,
-                    //   height: 32,
-                    // )
                   ],
                 ).mPadding(
                   horizontal: spaces.space21,
@@ -80,7 +74,7 @@ class JobScreenDetailsScreen extends StatelessWidget {
           Row(
             children: [
               MNetworkImage(
-                url: job!.jobCompany!.logo!,
+                url: job?.jobCompany?.logo ?? '',
                 fit: BoxFit.cover,
                 borderRadius: 100,
                 height: 90,
@@ -189,7 +183,13 @@ class JobScreenDetailsScreen extends StatelessWidget {
                                 maxWidth: context.w * 0.8,
                               )
                             ],
-                          ).mPadding(vertical: spaces.space12),
+                          )
+                              .mAddAction(
+                                onTap: () => context.push(
+                                  CompanyOrPharmacyScreen(job: job!),
+                                ),
+                              )
+                              .mPadding(vertical: spaces.space12),
                           MText(
                             text: "${context.localization?.jobDetails} :",
                             fontFamily: foontFamily.tajawalBold,

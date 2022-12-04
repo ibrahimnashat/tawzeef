@@ -258,11 +258,13 @@ class AddJobScreenModel extends ChangeNotifier {
   }
 
   Future<void> getStates(BuildContext context) async {
+    Loader.loading();
     await stateServices.getStates(
       apiToken: localStorage.logUser.apiToken ?? '',
       countryId: country!.id!,
       context: context,
       onSeccuss: (res, message) {
+        Loader.dismiss(context);
         if (res.state != null) {
           states.addAll(res.state!);
           cities.clear();
@@ -277,11 +279,13 @@ class AddJobScreenModel extends ChangeNotifier {
   }
 
   Future<void> getCities(BuildContext context) async {
+    Loader.loading();
     await cityServices.getCities(
       apiToken: localStorage.logUser.apiToken ?? '',
       stateId: state!.id!,
       context: context,
       onSeccuss: (res, message) {
+        Loader.dismiss(context);
         if (res.city != null) {
           cities.addAll(res.city!);
           notifyListeners();

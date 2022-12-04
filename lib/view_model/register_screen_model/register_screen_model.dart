@@ -1,5 +1,4 @@
 import 'package:tawzeef/shared/consts/exports.dart';
-import 'package:tawzeef/repository/services/register_services.dart';
 
 class RegisterScreenModel extends ChangeNotifier {
   final password = TextEditingController();

@@ -121,7 +121,7 @@ class PharmacistFilterScreen extends ConsumerWidget {
                     color: coolors.primaryColor,
                   ),
                   child: MDropDown<JobTitleModel>(
-                    hint: "Jop Title",
+                    hint: context.localization?.jobTitle,
                     itemTitle: (item) => item.title!,
                     setInitial: controller.jopTitle,
                     iconColor: coolors.white,

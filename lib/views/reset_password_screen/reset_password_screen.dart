@@ -97,8 +97,10 @@ class ResetPasswordScreen extends StatelessWidget {
                       return MBouncingButton(
                         title: context.localization?.continuue,
                         color: coolors.primaryColor,
-                        onTap: () => controller.resetPassword(context,
-                            apiToken: apiToken),
+                        onTap: () {
+                          controller.resetPassword(
+                              context: context, apiToken: apiToken);
+                        },
                       );
                     }),
                   ],

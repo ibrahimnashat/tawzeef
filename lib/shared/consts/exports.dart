@@ -65,6 +65,7 @@ export 'package:tawzeef/repository/models/objects/user_model.dart';
 export 'package:tawzeef/repository/models/objects/notification_model.dart';
 export 'package:tawzeef/repository/models/objects/degree_level_model.dart';
 export 'package:tawzeef/repository/models/objects/profile_education_model.dart';
+export 'package:tawzeef/repository/models/objects/industry_model.dart';
 
 //---- api ----
 export 'package:tawzeef/repository/api.dart';
@@ -181,6 +182,8 @@ export 'package:tawzeef/repository/services/company_or_pharmacy_services/edit_co
 export 'package:tawzeef/repository/services/company_or_pharmacy_services/change_user_applying_status_services.dart';
 export 'package:tawzeef/repository/services/company_or_pharmacy_services/get_users_of_job_services.dart';
 export 'package:tawzeef/repository/services/company_or_pharmacy_services/get_my_jobs_services.dart';
+export 'package:tawzeef/repository/services/register_services.dart';
+export 'package:tawzeef/repository/services/change_language_services.dart';
 
 //---- views ----
 //---- max view of company or pharmacy and pharmacist ----
@@ -223,7 +226,7 @@ export 'package:tawzeef/views/pharmacist_view_section/job_details_screen/job_scr
 export 'package:tawzeef/views/pharmacist_view_section/edit_profile_screen/edit_profile_screen.dart';
 export 'package:tawzeef/views/pharmacist_view_section/edit_profile_screen/edit_education_screen.dart';
 export 'package:tawzeef/views/pharmacist_view_section/job_details_screen/widgets/alert_successfully_item.dart';
-
+export 'package:tawzeef/views/pharmacist_view_section/company_or_pharmacy_screen/company_or_pharmacy_screen.dart';
 //---- view models ----
 //---- max company or pharmacy and pharmacist ----
 export 'package:tawzeef/view_model/spalsh_screen_model/spalsh_screen_model.dart';

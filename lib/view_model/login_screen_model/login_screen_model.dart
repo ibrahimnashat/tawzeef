@@ -4,6 +4,7 @@ class LoginScreenModel extends ChangeNotifier {
   final password = TextEditingController();
   final email = TextEditingController();
   final _loginServices = LoginServices();
+
   void login(BuildContext context) async {
     if (email.text.isNotEmpty && password.text.isNotEmpty) {
       Loader.show(context: context);

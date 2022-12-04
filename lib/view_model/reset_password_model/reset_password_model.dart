@@ -8,9 +8,7 @@ class ResetPasswordScreenModel extends ChangeNotifier {
   final confirmPassword = TextEditingController();
 
   Future<void> resetPassword(
-    BuildContext context, {
-    required String apiToken,
-  }) async {
+      {required BuildContext context, required String apiToken}) async {
     if (password.text.isEmpty) {
       Toast.showOnError(context, context.localization?.pleaseEnterPassword);
     } else if (confirmPassword.text.isEmpty) {
