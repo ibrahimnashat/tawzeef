@@ -38,6 +38,7 @@ class Url {
 
   //---- only company urls ----
   final String getCompnayNotifications = "company/notification";
+  final String companyResendCode = "company/resendCode";
   final String getCompanyNotificationsCount = "company/countNotification";
   final String jobShift = "company/JobShift";
   final String jobType = "company/JobType";

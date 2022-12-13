@@ -1,8 +1,10 @@
+import 'package:tawzeef/repository/services/resend_code_services.dart';
 import 'package:tawzeef/shared/consts/exports.dart';
 
 class VerifyCodeScreenModel extends ChangeNotifier {
   String _code = '';
   final verifyCodeServices = VerifyCodeServices();
+  final resendCodeServices = ResendCodeServices();
 
   void setCode(String value) {
     _code = value;
@@ -21,7 +23,7 @@ class VerifyCodeScreenModel extends ChangeNotifier {
         apiToken: localStorage.logUser.apiToken,
         email: email,
         context: context,
-        onSeccuss: (res, message) {
+        onSeccuss: (res, message) async {
           Loader.dismiss(context);
           if (res.apiToken != null) {
             context.pushReplacement(
@@ -37,6 +39,8 @@ class VerifyCodeScreenModel extends ChangeNotifier {
             }
           }
           Toast.showOnSuccessfully(context, message);
+          await localStorage
+              .loggedUser((localStorage.logUser..verified = 1).toJson());
         },
         onError: (status, message) {
           Loader.dismiss(context);
@@ -79,5 +83,18 @@ class VerifyCodeScreenModel extends ChangeNotifier {
     } else {
       context.push(const PharmacistHomeScreen());
     }
+  }
+
+  Future<void> resendCode(BuildContext context) async {
+    Loader.show(context: context);
+    await resendCodeServices.verifyCode(
+      apiToken: localStorage.logUser.apiToken,
+      fcmToken: await fCMNotification.getFCMToken(),
+      context: context,
+      onSeccuss: (res, message) {
+        Loader.dismiss(context);
+      },
+      onError: (status, error) {},
+    );
   }
 }

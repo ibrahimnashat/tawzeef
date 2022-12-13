@@ -4,6 +4,12 @@ class LoginScreenModel extends ChangeNotifier {
   final password = TextEditingController();
   final email = TextEditingController();
   final _loginServices = LoginServices();
+  bool hidePassword = true;
+
+  void changeHidePasswordType() {
+    hidePassword = !hidePassword;
+    notifyListeners();
+  }
 
   void login(BuildContext context) async {
     if (email.text.isNotEmpty && password.text.isNotEmpty) {
@@ -42,7 +48,6 @@ class LoginScreenModel extends ChangeNotifier {
   void _onPharmacyOrCompanyTypeOpen(
       BuildContext context, UserModel loggedUser) {
     if (loggedUser.image == null ||
-        loggedUser.city == null ||
         loggedUser.country == null ||
         loggedUser.description == null ||
         loggedUser.noOfEmployees == null) {
@@ -59,9 +64,7 @@ class LoginScreenModel extends ChangeNotifier {
 
   void _onPharmacistTypeOpen(BuildContext context, UserModel loggedUser) {
     if (loggedUser.image == null ||
-        loggedUser.city == null ||
         loggedUser.country == null ||
-        loggedUser.education == null ||
         loggedUser.cv == null) {
       context.push(
         EditProfileScreen(

@@ -7,6 +7,19 @@ class ChangePasswordScreenModel extends ChangeNotifier {
   final password = TextEditingController();
   final confirmPassword = TextEditingController();
 
+  bool hidePassword = true;
+  bool hideConfirmPassword = true;
+
+  void setHidePasswordType() {
+    hidePassword = !hidePassword;
+    notifyListeners();
+  }
+
+  void setHideConfirmPasswordType() {
+    hideConfirmPassword = !hideConfirmPassword;
+    notifyListeners();
+  }
+
   Future<void> changePassword(
     BuildContext context,
   ) async {

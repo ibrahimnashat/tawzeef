@@ -6,6 +6,18 @@ class ResetPasswordScreenModel extends ChangeNotifier {
   final resetPasswordServices = ResetPasswordServices();
   final password = TextEditingController();
   final confirmPassword = TextEditingController();
+  bool hidePassword = true;
+  bool hideConfirmPassword = true;
+
+  void setHidePasswordType() {
+    hidePassword = !hidePassword;
+    notifyListeners();
+  }
+
+  void setHideConfirmPasswordType() {
+    hideConfirmPassword = !hideConfirmPassword;
+    notifyListeners();
+  }
 
   Future<void> resetPassword(
       {required BuildContext context, required String apiToken}) async {

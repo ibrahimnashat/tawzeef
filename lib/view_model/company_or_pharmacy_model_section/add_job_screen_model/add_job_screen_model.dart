@@ -5,7 +5,7 @@ class AddJobScreenModel extends ChangeNotifier {
   CityModel? city;
   StateModel? state;
   JobShiftModel? jobShift;
-  CareerLevelModel? careerLevel;
+  // CareerLevelModel? careerLevel;
   JobTypeModel? jobType;
   JobExperienceModel? jobExperience;
   JobTitleModel? jobTitle;
@@ -13,7 +13,7 @@ class AddJobScreenModel extends ChangeNotifier {
   final List<StateModel> states = [];
   final List<CityModel> cities = [];
   final List<JobShiftModel> jobShifts = [];
-  final List<CareerLevelModel> careerLevels = [];
+  // final List<CareerLevelModel> careerLevels = [];
   final List<JobTypeModel> jobTypes = [];
   final List<JobExperienceModel> jobExperiences = [];
   final List<JobTitleModel> jobTitles = [];
@@ -43,7 +43,7 @@ class AddJobScreenModel extends ChangeNotifier {
       getJobTitle(context),
       getJobTypes(context),
       getJobExperience(context),
-      getCareerLevels(context),
+      //  getCareerLevels(context),
       getJobShifts(context),
       getCountries(context),
     ]);
@@ -56,14 +56,14 @@ class AddJobScreenModel extends ChangeNotifier {
         jobExpired.text.isNotEmpty &&
         country != null &&
         jobShift != null &&
-        careerLevel != null &&
+        // careerLevel != null &&
         jobType != null &&
         jobExperience != null &&
         jobTitle != null) {
       Loader.show(context: context);
       await addJobServices.addJob(
         apiToken: localStorage.logUser.apiToken ?? '',
-        careerLevelId: careerLevel?.id,
+        //  careerLevelId: careerLevel?.id,
         countryId: country?.id,
         stateId: state?.id,
         cityId: city?.id,
@@ -97,7 +97,7 @@ class AddJobScreenModel extends ChangeNotifier {
         jobExpired.text.isNotEmpty ||
         country != null ||
         jobShift != null ||
-        careerLevel != null ||
+        //  careerLevel != null ||
         jobType != null ||
         jobExperience != null ||
         jobTitle != null) {
@@ -105,7 +105,7 @@ class AddJobScreenModel extends ChangeNotifier {
       await editJobServices.editJob(
         jobId: jobId,
         apiToken: localStorage.logUser.apiToken ?? '',
-        careerLevelId: careerLevel?.id,
+        // careerLevelId: careerLevel?.id,
         countryId: country?.id,
         stateId: state?.id,
         cityId: city?.id,
@@ -153,9 +153,9 @@ class AddJobScreenModel extends ChangeNotifier {
     this.jobShift = jobShift;
   }
 
-  void changeCareerLevel(CareerLevelModel careerLevel) {
-    this.careerLevel = careerLevel;
-  }
+  // void changeCareerLevel(CareerLevelModel careerLevel) {
+  //   this.careerLevel = careerLevel;
+  // }
 
   void changeJobType(JobTypeModel jobType) {
     this.jobType = jobType;
@@ -213,18 +213,18 @@ class AddJobScreenModel extends ChangeNotifier {
     );
   }
 
-  Future<void> getCareerLevels(BuildContext context) async {
-    await careerLevelsServices.getCareerLevels(
-      apiToken: localStorage.logUser.apiToken ?? '',
-      onSeccuss: (res, message) {
-        careerLevels.addAll(res.careerLevels!);
-        notifyListeners();
-      },
-      onError: (status, error) {
-        Toast.showOnError(context, error);
-      },
-    );
-  }
+  // Future<void> getCareerLevels(BuildContext context) async {
+  //   await careerLevelsServices.getCareerLevels(
+  //     apiToken: localStorage.logUser.apiToken ?? '',
+  //     onSeccuss: (res, message) {
+  //       careerLevels.addAll(res.careerLevels!);
+  //       notifyListeners();
+  //     },
+  //     onError: (status, error) {
+  //       Toast.showOnError(context, error);
+  //     },
+  //   );
+  // }
 
   Future<void> getJobShifts(BuildContext context) async {
     await jobShiftsServices.jobShifts(
@@ -258,7 +258,7 @@ class AddJobScreenModel extends ChangeNotifier {
   }
 
   Future<void> getStates(BuildContext context) async {
-    Loader.loading();
+    Loader.show(context: context);
     await stateServices.getStates(
       apiToken: localStorage.logUser.apiToken ?? '',
       countryId: country!.id!,
@@ -279,7 +279,7 @@ class AddJobScreenModel extends ChangeNotifier {
   }
 
   Future<void> getCities(BuildContext context) async {
-    Loader.loading();
+    Loader.show(context: context);
     await cityServices.getCities(
       apiToken: localStorage.logUser.apiToken ?? '',
       stateId: state!.id!,
@@ -310,7 +310,7 @@ class AddJobScreenModel extends ChangeNotifier {
       is24HourMode: false,
       isShowSeconds: false,
       startInitialDate: DateTime.now(),
-      startFirstDate: DateTime(1980),
+      startFirstDate: DateTime(1960),
       startLastDate: DateTime.now().add(const Duration(days: 500)),
       borderRadius: const Radius.circular(12),
     );

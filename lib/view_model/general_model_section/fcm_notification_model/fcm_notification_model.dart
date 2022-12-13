@@ -28,18 +28,20 @@ class FCMNotificationModel extends ChangeNotifier {
   }
 
   void onClick() {
-    if (localStorage.logUser.email != null) {
-      if (loginType.userType == UserType.pharmacist) {
-        navigatorKey.currentState!.push(MaterialPageRoute(
-            builder: ((context) => const PharmacistNotificationScreen())));
+    if (localStorage.logUser.verified == 1) {
+      if (localStorage.logUser.email != null) {
+        if (loginType.userType == UserType.pharmacist) {
+          navigatorKey.currentState!.push(MaterialPageRoute(
+              builder: ((context) => const PharmacistNotificationScreen())));
+        } else {
+          navigatorKey.currentState!.push(MaterialPageRoute(
+              builder: ((context) =>
+                  const CompanyOrPharmacyNotificationScreen())));
+        }
       } else {
-        navigatorKey.currentState!.push(MaterialPageRoute(
-            builder: ((context) =>
-                const CompanyOrPharmacyNotificationScreen())));
+        navigatorKey.currentState!
+            .push(MaterialPageRoute(builder: ((context) => LoginTypeScreen())));
       }
-    } else {
-      navigatorKey.currentState!.push(
-          MaterialPageRoute(builder: ((context) => const LoginTypeScreen())));
     }
   }
 

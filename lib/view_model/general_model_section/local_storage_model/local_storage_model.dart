@@ -32,6 +32,7 @@ class LocalStorageModel extends ChangeNotifier {
     print(data);
     await _storeObject(data, 'logUser');
     logUser = UserModel.fromJson(data);
+
     notifyListeners();
   }
 
@@ -63,7 +64,7 @@ class LocalStorageModel extends ChangeNotifier {
   }
 
   Future<void> logOut(BuildContext context) async {
-    context.pushAndRemoveUntil(const LoginTypeScreen());
+    context.pushAndRemoveUntil(LoginTypeScreen());
     await loggedUser({});
   }
 

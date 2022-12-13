@@ -56,12 +56,12 @@ class LoginScreen extends StatelessWidget {
                       ).mPadding(bottom: spaces.space24);
                     }),
                     Consumer(builder: (context, ref, child) {
-                      final controller = ref.read(loginController);
+                      final controller = ref.watch(loginController);
                       return MTextFiled(
                         controller: controller.password,
                         lableText: context.localization?.password,
                         textColor: coolors.primaryColor,
-                        obscureText: true,
+                        obscureText: controller.hidePassword,
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: coolors.primaryColor,
@@ -71,6 +71,11 @@ class LoginScreen extends StatelessWidget {
                         ),
                         suffix: MSvg(
                           name: svgs.password,
+                          color: controller.hidePassword
+                              ? coolors.primaryColor
+                              : coolors.red,
+                        ).mAddAction(
+                          onTap: () => controller.changeHidePasswordType(),
                         ),
                       );
                     }),

@@ -4,7 +4,7 @@ class AddJobRequest {
   int? countryId;
   int? stateId;
   int? cityId;
-  int? careerLevelId;
+  //int? careerLevelId;
   String? jobExpired;
   String? salary;
   int? jobTypeId;
@@ -17,7 +17,7 @@ class AddJobRequest {
     this.apiToken = '',
     this.jobTitleId,
     this.description = '',
-    this.careerLevelId,
+    // this.careerLevelId,
     this.jobExpired = '',
     this.jobExperienceId,
     this.jobTypeId,
@@ -35,7 +35,7 @@ class AddJobRequest {
     if (countryId != null) countryId = json['country_id'];
     if (stateId != null) stateId = json['state_id'];
     if (cityId != null) cityId = json['city_id'];
-    if (careerLevelId != null) careerLevelId = json['career_level_id'];
+    //  if (careerLevelId != null) careerLevelId = json['career_level_id'];
     if (jobExpired != "") jobExpired = json['job_expired'];
     if (jobTypeId != null) jobTypeId = json['job_type_id'];
     if (salary != "") salary = json['salary'];
@@ -58,9 +58,9 @@ class AddJobRequest {
     if (jobShiftId != null) data['job_shift_id'] = jobShiftId.toString();
     if (numOfPositions != "") data['num_of_positions'] = numOfPositions;
     if (description != "") data['description'] = description;
-    if (careerLevelId != null) {
-      data['career_level_id'] = careerLevelId.toString();
-    }
+    // if (careerLevelId != null) {
+    //   data['career_level_id'] = careerLevelId.toString();
+    // }
     if (jobExperienceId != null) {
       data['job_experience'] = jobExperienceId.toString();
     }

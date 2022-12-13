@@ -9,6 +9,7 @@ class RegisterServices {
     required String password,
     required String name,
     required String phone,
+    required String type,
     String? fCMToken,
     String? lang,
     required Function(RegisterResponse, String) onSeccuss,
@@ -21,6 +22,7 @@ class RegisterServices {
       onError: onError,
       onSeccuss: onSeccuss,
       request: RegisterRequest(
+        type: type,
         name: name,
         phone: phone,
         email: email,

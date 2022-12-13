@@ -85,8 +85,29 @@ class VerifyCodeScreen extends StatelessWidget {
                           debugPrint("Allowing to paste $text");
                           return true;
                         },
-                      ).mPadding(top: spaces.space24, bottom: spaces.space80);
+                      );
                     }),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Consumer(builder: (context, ref, child) {
+                          final controller =
+                              ref.watch(verifyCodeScreenController);
+                          return MText(
+                            text: context.localization?.resendCode,
+                            fontFamily: foontFamily.tajawalBold,
+                            fontColor: Colors.grey,
+                          )
+                              .mPadding(
+                                top: spaces.space24,
+                                bottom: spaces.space50,
+                                horizontal: spaces.space24,
+                              )
+                              .mAddAction(
+                                  onTap: () => controller.resendCode(context));
+                        }),
+                      ],
+                    ),
                     Consumer(builder: (context, ref, child) {
                       final controller = ref.watch(verifyCodeScreenController);
                       return MBouncingButton(

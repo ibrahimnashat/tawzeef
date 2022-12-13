@@ -1,8 +1,9 @@
 import 'package:tawzeef/shared/consts/exports.dart';
 
 class LoginTypeScreen extends StatelessWidget {
-  const LoginTypeScreen({Key? key}) : super(key: key);
-
+  LoginTypeScreen({Key? key}) : super(key: key);
+  final ChangeNotifierProvider<SettingsScreenModel> settingsController =
+      ChangeNotifierProvider<SettingsScreenModel>((ref) => settings);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,11 +14,37 @@ class LoginTypeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: Consumer(builder: (context, ref, child) {
+                  final controller = ref.watch(settingsController);
+                  controller.loading(context);
+                  return Container(
+                    margin: EdgeInsets.all(spaces.space21),
+                    padding: EdgeInsets.symmetric(horizontal: spaces.space12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: MDropDown<dynamic>(
+                      setInitial: controller.inital,
+                      removeBorder: true,
+                      isExpanded: false,
+                      itemTitle: (res) => res['name'],
+                      onChanged: (res) {
+                        controller.chooseLanguage(
+                            context: context, lang: res['value']);
+                      },
+                      options: controller.options,
+                    ),
+                  );
+                }),
+              ),
               MAssetImage(
                 name: pngs.welcome,
                 width: context.w,
                 fit: BoxFit.cover,
-                height: 500,
+                height: 450,
               ),
               MBouncingButton(
                 icon: svgs.person,

@@ -104,7 +104,7 @@ class SignUpScreen extends StatelessWidget {
                             controller: controller.password,
                             lableText: context.localization?.password,
                             textColor: coolors.primaryColor,
-                            obscureText: true,
+                            obscureText: controller.hidePassword,
                             border: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: coolors.primaryColor,
@@ -114,6 +114,11 @@ class SignUpScreen extends StatelessWidget {
                             ),
                             suffix: MSvg(
                               name: svgs.password,
+                              color: controller.hidePassword
+                                  ? coolors.primaryColor
+                                  : coolors.red,
+                            ).mAddAction(
+                              onTap: () => controller.changeHidePasswordType(),
                             ),
                           );
                         }),

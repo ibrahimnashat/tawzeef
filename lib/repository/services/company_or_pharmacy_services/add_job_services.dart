@@ -5,7 +5,7 @@ class AddJobServices {
 
   Future<void> addJob({
     required String apiToken,
-    int? careerLevelId,
+    // int? careerLevelId,
     String? description,
     int? jobExperienceId,
     String? jobExpired,
@@ -32,7 +32,7 @@ class AddJobServices {
         countryId: countryId,
         stateId: stateId,
         apiToken: apiToken,
-        careerLevelId: careerLevelId,
+        // careerLevelId: careerLevelId,
         description: description,
         jobExperienceId: jobExperienceId,
         jobExpired: jobExpired,

@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'messages_all.dart';
 
 class AppLocalizations {
+  String get note => Intl.message("Note !", name: "note");
   String get signUp => Intl.message("Sign Up", name: "signUp");
   String get continuue => Intl.message("Continue", name: "continuue");
   String get verifcationCode =>
@@ -35,6 +36,7 @@ class AppLocalizations {
       Intl.message("Create Account", name: "createAccount");
   String get pharmacist => Intl.message("Pharmacist", name: "pharmacist");
 
+  String get resendCode => Intl.message('Resend Code', name: "resendCode");
   String get pharmacy => Intl.message('Pharmacy', name: "pharmacy");
   String get changePassword =>
       Intl.message("Change Password", name: "changePassword");

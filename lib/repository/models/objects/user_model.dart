@@ -19,6 +19,7 @@ class UserModel {
   String? linkedin;
   String? twitter;
   String? website;
+  int? verified;
 
   UserModel({
     this.name,
@@ -39,6 +40,7 @@ class UserModel {
     this.twitter,
     this.website,
     this.id,
+    this.verified,
   });
 
   ProfileEducationModel? get education {
@@ -53,6 +55,7 @@ class UserModel {
     id = json['id'];
     facebook = json['facebook'];
     linkedin = json['linkedin'];
+    verified = json['verified'];
     twitter = json['twitter'];
     website = json['website'];
     description = json['description'];
@@ -62,7 +65,7 @@ class UserModel {
     phone = json['phone'];
     apiToken = json['apiToken'];
     if (json['dateOfBirth'] != null) {
-      dateOfBirth = DateTime.tryParse(json['dateOfBirth'])!.dateOnly;
+      dateOfBirth = DateTime.tryParse(json['dateOfBirth'])?.dateOnly;
     }
     if (json['country'] != null) {
       country = CountryModel.fromJson(json['country']);
@@ -82,6 +85,7 @@ class UserModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['facebook'] = facebook;
+    data['verified'] = verified;
     data['id'] = id;
     data['linkedin'] = linkedin;
     data['twitter'] = twitter;

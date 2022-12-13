@@ -42,7 +42,6 @@ class SettingsScreenModel extends ChangeNotifier {
   void chooseLanguage({required BuildContext context, required String lang}) {
     locale = Locale(lang);
     delegate = SpecificLocalizationsDelegate(locale);
-    context.pushAndRemoveUntil(const LoginTypeScreen());
     localStorage.storeLanguage(lang);
     notifyListeners();
   }

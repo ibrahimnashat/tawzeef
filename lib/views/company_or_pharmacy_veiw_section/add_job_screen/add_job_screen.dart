@@ -127,31 +127,31 @@ class _AddJobScreenState extends State<AddJobScreen> {
                       );
                     }),
                   ).mPadding(bottom: spaces.space12),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: spaces.space24),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: coolors.primaryColor),
-                      borderRadius: BorderRadius.circular(25),
-                      color: coolors.primaryColor,
-                    ),
-                    child: Consumer(builder: (context, ref, child) {
-                      final controller = ref.watch(addJobController);
-                      return MDropDown<CareerLevelModel>(
-                        itemTitle: (res) => res.career!,
-                        setInitial: controller.careerLevel,
-                        hint: widget.job?.careerLevel?.career ??
-                            context.localization?.careerLevel,
-                        iconColor: coolors.white,
-                        dropdownColor: coolors.primaryColor,
-                        textColor: coolors.white,
-                        textSize: foontSize.font16,
-                        removeBorder: true,
-                        isExpanded: false,
-                        onChanged: (res) => controller.changeCareerLevel(res),
-                        options: controller.careerLevels,
-                      );
-                    }),
-                  ).mPadding(bottom: spaces.space12),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(horizontal: spaces.space24),
+                  //   decoration: BoxDecoration(
+                  //     border: Border.all(color: coolors.primaryColor),
+                  //     borderRadius: BorderRadius.circular(25),
+                  //     color: coolors.primaryColor,
+                  //   ),
+                  //   child: Consumer(builder: (context, ref, child) {
+                  //     final controller = ref.watch(addJobController);
+                  //     return MDropDown<CareerLevelModel>(
+                  //       itemTitle: (res) => res.career ?? '',
+                  //       setInitial: controller.careerLevel,
+                  //       hint: widget.job?.careerLevel?.career ??
+                  //           context.localization?.careerLevel,
+                  //       iconColor: coolors.white,
+                  //       dropdownColor: coolors.primaryColor,
+                  //       textColor: coolors.white,
+                  //       textSize: foontSize.font16,
+                  //       removeBorder: true,
+                  //       isExpanded: false,
+                  //       onChanged: (res) => controller.changeCareerLevel(res),
+                  //       options: controller.careerLevels,
+                  //     );
+                  //   }),
+                  // ).mPadding(bottom: spaces.space12),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: spaces.space24),
                     decoration: BoxDecoration(

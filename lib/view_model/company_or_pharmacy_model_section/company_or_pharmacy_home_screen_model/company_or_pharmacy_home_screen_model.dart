@@ -122,7 +122,7 @@ class CompanyOrPharnamcyHomeScreenModel extends ChangeNotifier {
   }
 
   Future<void> getStates(BuildContext context) async {
-    Loader.loading();
+    Loader.show(context: context);
     await stateServices.getStates(
       countryId: country!.id!,
       apiToken: localStorage.logUser.apiToken ?? '',
@@ -143,7 +143,7 @@ class CompanyOrPharnamcyHomeScreenModel extends ChangeNotifier {
   }
 
   Future<void> getCities(BuildContext context) async {
-    Loader.loading();
+    Loader.show(context: context);
     await cityServices.getCities(
       apiToken: localStorage.logUser.apiToken ?? '',
       stateId: state!.id!,

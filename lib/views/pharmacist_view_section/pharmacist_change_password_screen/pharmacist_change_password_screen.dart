@@ -73,7 +73,7 @@ class PharmacistChangePasswordScreen extends StatelessWidget {
                 controller: controller.password,
                 lableText: context.localization?.newPassword,
                 textColor: coolors.primaryColor,
-                obscureText: true,
+                obscureText: controller.hidePassword,
                 border: UnderlineInputBorder(
                   borderSide: BorderSide(
                     color: coolors.primaryColor,
@@ -83,7 +83,10 @@ class PharmacistChangePasswordScreen extends StatelessWidget {
                 ),
                 suffix: MSvg(
                   name: svgs.password,
-                ),
+                  color: controller.hidePassword
+                      ? coolors.primaryColor
+                      : coolors.red,
+                ).mAddAction(onTap: () => controller.setHidePasswordType()),
               ).mPadding(vertical: spaces.space30);
             }),
             Consumer(builder: (context, ref, child) {
@@ -92,7 +95,7 @@ class PharmacistChangePasswordScreen extends StatelessWidget {
                 controller: controller.confirmPassword,
                 lableText: context.localization?.confirmPassword,
                 textColor: coolors.primaryColor,
-                obscureText: true,
+                obscureText: controller.hideConfirmPassword,
                 border: UnderlineInputBorder(
                   borderSide: BorderSide(
                     color: coolors.primaryColor,
@@ -102,7 +105,11 @@ class PharmacistChangePasswordScreen extends StatelessWidget {
                 ),
                 suffix: MSvg(
                   name: svgs.password,
-                ),
+                  color: controller.hideConfirmPassword
+                      ? coolors.primaryColor
+                      : coolors.red,
+                ).mAddAction(
+                    onTap: () => controller.setHideConfirmPasswordType()),
               ).mPadding(bottom: spaces.space30);
             }),
             Consumer(builder: (context, ref, child) {

@@ -26,7 +26,7 @@ class MyApplicationItem extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: MNetworkImage(
-                    url: job.jobCompany!.logo!,
+                    url: job.jobCompany?.logo ?? '',
                     fit: BoxFit.cover,
                     borderRadius: 100,
                     height: 90,

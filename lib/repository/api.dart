@@ -23,6 +23,7 @@ class Api<T, G> {
       headers: headers,
     );
     final data = jsonDecode(value.body);
+    localStorage.print(data);
     String message = '';
     if (data["message"] != null) message = data["message"];
     if (data["status"] == 200 || data["status"] == 204) {

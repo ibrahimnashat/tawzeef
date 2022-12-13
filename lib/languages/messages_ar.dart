@@ -21,8 +21,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function>{
+        "resendCode": MessageLookupByLibrary.simpleMessage('اعادة ارسال الرمز'),
         "signUp": MessageLookupByLibrary.simpleMessage('أنشاء حساب'),
         "continuue": MessageLookupByLibrary.simpleMessage('أستمرر'),
+        "note": MessageLookupByLibrary.simpleMessage('لاحظ !'),
         "verifcationCode": MessageLookupByLibrary.simpleMessage('رمز التحقق'),
         "name": MessageLookupByLibrary.simpleMessage('الاسم'),
         "email": MessageLookupByLibrary.simpleMessage('البريد الاكتروني'),

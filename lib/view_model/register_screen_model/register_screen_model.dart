@@ -6,6 +6,13 @@ class RegisterScreenModel extends ChangeNotifier {
   final name = TextEditingController();
   final phone = TextEditingController();
   final _registerServices = RegisterServices();
+  bool hidePassword = true;
+
+  void changeHidePasswordType() {
+    hidePassword = !hidePassword;
+    notifyListeners();
+  }
+
   void register(BuildContext context) async {
     if (email.text.isEmpty) {
       Toast.showOnError(context, context.localization?.pleaseEnterEmail);
@@ -24,6 +31,7 @@ class RegisterScreenModel extends ChangeNotifier {
         phone.text.isNotEmpty) {
       Loader.show(context: context);
       _registerServices.register(
+        type: loginType.userType.name,
         context: context,
         email: email.text,
         name: name.text,

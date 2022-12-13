@@ -17,7 +17,7 @@ class Toast {
       backgroundType: BackgroundType.solid,
       barrierColor: Colors.black12,
       title: Text(
-        "Note !",
+        context.localization?.note ?? '',
         style: TextStyle(
           color: color ?? coolors.primaryColor,
           fontSize: 24,
