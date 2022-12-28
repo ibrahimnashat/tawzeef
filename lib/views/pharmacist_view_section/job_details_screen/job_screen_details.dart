@@ -174,7 +174,7 @@ class JobScreenDetailsScreen extends StatelessWidget {
                               ).mPadding(end: spaces.space12),
                               MText(
                                 text:
-                                    "${job?.jobCompany!.name} | ${job?.state!.state} - ${job?.city!.city}",
+                                    "${job?.jobCompany?.name} | ${job?.state?.state} - ${job?.city?.city}",
                                 textDecoration: TextDecoration.underline,
                                 fontColor: coolors.primaryColor,
                                 fontFamily: foontFamily.tajawalBold,

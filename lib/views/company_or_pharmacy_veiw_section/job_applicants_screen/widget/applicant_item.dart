@@ -45,7 +45,7 @@ class JobApplicantItem extends StatelessWidget {
                       fontFamily: foontFamily.tajawalBold,
                     ),
                     MText(
-                      text: user.education?.degreeType,
+                      text: user.education?.degreeType ?? user.email,
                       fontSize: foontSize.font16,
                     ),
                   ],

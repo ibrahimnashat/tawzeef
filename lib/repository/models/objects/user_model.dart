@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:tawzeef/shared/consts/exports.dart';
 
 class UserModel {
@@ -55,7 +57,7 @@ class UserModel {
     id = json['id'];
     facebook = json['facebook'];
     linkedin = json['linkedin'];
-    verified = json['verified'];
+    verified = int.tryParse('${json['verified']}');
     twitter = json['twitter'];
     website = json['website'];
     description = json['description'];
@@ -65,7 +67,7 @@ class UserModel {
     phone = json['phone'];
     apiToken = json['apiToken'];
     if (json['dateOfBirth'] != null) {
-      dateOfBirth = DateTime.tryParse(json['dateOfBirth'])?.dateOnly;
+      dateOfBirth = json['dateOfBirth'];
     }
     if (json['country'] != null) {
       country = CountryModel.fromJson(json['country']);

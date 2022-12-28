@@ -1,3 +1,4 @@
+import 'dart:developer' as dev;
 import 'dart:math';
 
 import 'package:tawzeef/shared/consts/exports.dart';
@@ -70,6 +71,7 @@ class PharmacistHomeScreenModel extends ChangeNotifier {
         stateId: state?.id,
         jobtitleId: jopTitle?.id,
         onSeccuss: (res, message) {
+          _jobs.clear();
           Loader.dismiss(context);
           res.jobs?.forEach((element) {
             if (!_jobs.contains(element)) _jobs.add(element);

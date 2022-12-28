@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:tawzeef/shared/consts/exports.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -64,6 +66,7 @@ class Api<T, G> {
     var value = await http.Response.fromStream(res);
     final data = jsonDecode(value.body);
     String message = '';
+    log(data.toString());
     if (data["message"] != null) message = data["message"];
     if (data["status"] == 200 || data["status"] == 204) {
       return onSeccuss(fromJson(data), message);

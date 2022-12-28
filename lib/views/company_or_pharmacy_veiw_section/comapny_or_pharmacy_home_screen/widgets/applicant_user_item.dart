@@ -37,22 +37,25 @@ class ApplicantUserItem extends StatelessWidget {
                   fontColor: coolors.primaryColor,
                   fontFamily: foontFamily.tajawalBold,
                 ),
-                MText(
-                  text: user.education?.degreeType,
-                  fontSize: foontSize.font18,
-                  fontColor: coolors.primaryColor,
-                  fontFamily: foontFamily.tajawalBold,
-                ),
-                MText(
-                  text: user.education?.endYear?.yearMonthDay,
-                  fontSize: foontSize.font18,
-                ),
-                MText(
-                  text: "${user.state?.state}, ${user.country?.country}",
-                  fontSize: foontSize.font18,
-                  maxLines: 2,
-                  maxWidth: context.w * 0.63,
-                ),
+                if (user.education?.degreeType != null)
+                  MText(
+                    text: user.education?.degreeType,
+                    fontSize: foontSize.font18,
+                    fontColor: coolors.primaryColor,
+                    fontFamily: foontFamily.tajawalBold,
+                  ),
+                if (user.education?.endYear != null)
+                  MText(
+                    text: user.education?.endYear?.yearMonthDay,
+                    fontSize: foontSize.font18,
+                  ),
+                if (user.state?.state != null || user.country?.country != null)
+                  MText(
+                    text: "${user.state?.state}, ${user.country?.country}",
+                    fontSize: foontSize.font18,
+                    maxLines: 2,
+                    maxWidth: context.w * 0.63,
+                  ),
               ],
             )
           ],

@@ -42,23 +42,28 @@ class MyApplicationItem extends StatelessWidget {
                       fontColor: coolors.primaryColor,
                       fontFamily: foontFamily.tajawalBold,
                     ),
-                    MText(
-                      text:
-                          "${job.jobCompany?.name} | ${job.state?.state} - ${job.city?.city}",
-                      fontColor: coolors.highLight,
-                      maxLines: 2,
-                      maxWidth: context.w * 0.55,
-                      fontSize: foontSize.font16,
-                      fontFamily: foontFamily.tajawalRegular,
-                    ),
-                    MText(
-                      text: DateTime.tryParse(job.createdAt!)?.monthAndDay,
-                      fontSize: foontSize.font16,
-                    ).mPadding(bottom: spaces.space5),
-                    MText(
-                      text: job.status,
-                      fontSize: foontSize.font16,
-                    ),
+                    if (job.jobCompany?.name != null ||
+                        job.state?.state != null ||
+                        job.city?.city != null)
+                      MText(
+                        text:
+                            "${job.jobCompany?.name} | ${job.state?.state} - ${job.city?.city}",
+                        fontColor: coolors.highLight,
+                        maxLines: 2,
+                        maxWidth: context.w * 0.55,
+                        fontSize: foontSize.font16,
+                        fontFamily: foontFamily.tajawalRegular,
+                      ),
+                    if (job.createdAt != null)
+                      MText(
+                        text: DateTime.tryParse(job.createdAt!)?.monthAndDay,
+                        fontSize: foontSize.font16,
+                      ).mPadding(bottom: spaces.space5),
+                    if (job.status != null)
+                      MText(
+                        text: job.status,
+                        fontSize: foontSize.font16,
+                      ),
                   ],
                 )
               ],

@@ -22,8 +22,8 @@ class JobModel {
   JobTypeModel? jobType;
   JobShiftModel? jobShift;
   JobExperienceModel? jobExperience;
-  int? position;
-  int? view;
+  String? position;
+  String? view;
   String? expired;
   String? createdAt;
   String? status;
@@ -75,7 +75,7 @@ class JobModel {
         ? JobExperienceModel.fromJson(json['jobExperience'])
         : null;
     position = json['position'];
-    view = json['viwe'];
+    view = json['viwe'].toString();
     expired = json['expired'];
     createdAt = json['created_at'];
   }

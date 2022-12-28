@@ -44,20 +44,24 @@ class MyJobItem extends StatelessWidget {
                       maxLines: 2,
                       maxWidth: context.w * 0.54,
                     ),
-                    MText(
-                      text:
-                          "${job.city?.city}  | ${job.state?.state} - ${job.country?.country}",
-                      fontSize: foontSize.font16,
-                      maxLines: 2,
-                      maxWidth: context.w * 0.54,
-                    ),
-                    MText(
-                      text: job.jobType?.jobtype,
-                      fontSize: foontSize.font16,
-                      fontFamily: foontFamily.tajawalBold,
-                      maxLines: 2,
-                      maxWidth: context.w * 0.54,
-                    ),
+                    if (job.city?.city != null ||
+                        job.state?.state != null ||
+                        job.country?.country != null)
+                      MText(
+                        text:
+                            "${job.city?.city}  | ${job.state?.state} - ${job.country?.country}",
+                        fontSize: foontSize.font16,
+                        maxLines: 2,
+                        maxWidth: context.w * 0.54,
+                      ),
+                    if (job.jobType?.jobtype != null)
+                      MText(
+                        text: job.jobType?.jobtype,
+                        fontSize: foontSize.font16,
+                        fontFamily: foontFamily.tajawalBold,
+                        maxLines: 2,
+                        maxWidth: context.w * 0.54,
+                      ),
                   ],
                 )
               ],

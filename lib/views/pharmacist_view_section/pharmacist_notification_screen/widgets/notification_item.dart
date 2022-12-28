@@ -34,23 +34,26 @@ class NotificationItem extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    MText(
-                      text: notificaction.job?.jobCompany?.name,
-                      fontSize: foontSize.font20,
-                      fontColor: coolors.primaryColor,
-                      fontFamily: foontFamily.tajawalBold,
-                    ),
-                    MText(
-                      text: notificaction.title,
-                      fontSize: foontSize.font16,
-                      fontFamily: foontFamily.tajawalRegular,
-                      maxWidth: context.w * 0.6,
-                      maxLines: 2,
-                    ).mPadding(bottom: spaces.space5),
-                    MText(
-                      text: notificaction.message,
-                      fontSize: foontSize.font16,
-                    ),
+                    if (notificaction.job?.jobCompany?.name != null)
+                      MText(
+                        text: notificaction.job?.jobCompany?.name,
+                        fontSize: foontSize.font20,
+                        fontColor: coolors.primaryColor,
+                        fontFamily: foontFamily.tajawalBold,
+                      ),
+                    if (notificaction.title != null)
+                      MText(
+                        text: notificaction.title,
+                        fontSize: foontSize.font16,
+                        fontFamily: foontFamily.tajawalRegular,
+                        maxWidth: context.w * 0.6,
+                        maxLines: 2,
+                      ).mPadding(bottom: spaces.space5),
+                    if (notificaction.message != null)
+                      MText(
+                        text: notificaction.message,
+                        fontSize: foontSize.font16,
+                      ),
                   ],
                 )
               ],

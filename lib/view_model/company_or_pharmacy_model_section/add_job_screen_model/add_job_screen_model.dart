@@ -76,7 +76,7 @@ class AddJobScreenModel extends ChangeNotifier {
         numOfPositions: noOfPositions.text,
         salary: salary.text,
         context: context,
-        onSeccuss: (res, message) {
+        onSeccuss: (res, message) async {
           Loader.dismiss(context);
           context.pop();
           Toast.showOnSuccessfully(context, message);

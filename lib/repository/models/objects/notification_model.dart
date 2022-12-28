@@ -22,7 +22,7 @@ class NotificactionModel {
     job = json['job'] != null ? JobModel.fromJson(json['job']) : null;
     user = json['user'] != null ? UserModel.fromJson(json['user']) : null;
     id = json['id'];
-    isRead = json['is_read'];
+    isRead = int.tryParse(json['is_read'].toString());
     message = json['message'];
     title = json['title'];
   }

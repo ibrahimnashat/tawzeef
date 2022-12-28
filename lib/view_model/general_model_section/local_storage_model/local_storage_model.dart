@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:tawzeef/shared/consts/exports.dart';
 
-LocalStorageModel localStorage = LocalStorageModel._private();
+LocalStorageModel localStorage = LocalStorageModel();
 
 class LocalStorageModel extends ChangeNotifier {
   late UserModel logUser;
@@ -11,6 +11,7 @@ class LocalStorageModel extends ChangeNotifier {
       _get('choose-lang') == 'opened' ? true : false;
 
   late SharedPreferences prefs;
+
   Future<void> getPref() async {
     prefs = await SharedPreferences.getInstance();
     await _afterPrefAsync();
@@ -29,7 +30,6 @@ class LocalStorageModel extends ChangeNotifier {
   }
 
   Future<void> loggedUser(Map<String, dynamic> data) async {
-    print(data);
     await _storeObject(data, 'logUser');
     logUser = UserModel.fromJson(data);
 
@@ -74,9 +74,5 @@ class LocalStorageModel extends ChangeNotifier {
 
   void printForRequest(Object object) {
     log(object.toString());
-  }
-
-  LocalStorageModel._private() {
-    getPref();
   }
 }

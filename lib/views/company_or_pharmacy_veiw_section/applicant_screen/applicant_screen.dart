@@ -108,12 +108,14 @@ class ApplicantScreen extends StatelessWidget {
                                 fontSize: foontSize.font16,
                                 fontFamily: foontFamily.tajawalRegular,
                               ),
-                              MText(
-                                text:
-                                    "${user?.state?.state}, ${user?.country?.country}",
-                                fontSize: foontSize.font16,
-                                fontFamily: foontFamily.tajawalRegular,
-                              ),
+                              if (user?.state?.state != null &&
+                                  user?.country?.country != null)
+                                MText(
+                                  text:
+                                      "${user?.state?.state}, ${user?.country?.country}",
+                                  fontSize: foontSize.font16,
+                                  fontFamily: foontFamily.tajawalRegular,
+                                ),
                             ],
                           ),
                           const Divider().mPadding(top: spaces.space12),
@@ -136,23 +138,32 @@ class ApplicantScreen extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      MText(
-                                        text: user?.education?.university,
-                                        fontSize: foontSize.font16,
-                                        fontFamily: foontFamily.tajawalRegular,
-                                      ),
-                                      MText(
-                                        text:
-                                            "${user?.education?.degreeLevel?.degreeLevel} , ${user?.education?.degreeTitle}",
-                                        fontSize: foontSize.font16,
-                                        fontFamily: foontFamily.tajawalRegular,
-                                      ),
-                                      MText(
-                                        text:
-                                            "${user?.education?.startYear?.yearMonthDay}_${user?.education?.endYear?.yearMonthDay}",
-                                        fontSize: foontSize.font16,
-                                        fontFamily: foontFamily.tajawalRegular,
-                                      ),
+                                      if (user?.education?.university != null)
+                                        MText(
+                                          text: user?.education?.university,
+                                          fontSize: foontSize.font16,
+                                          fontFamily:
+                                              foontFamily.tajawalRegular,
+                                        ),
+                                      if (user?.education?.degreeLevel !=
+                                              null ||
+                                          user?.education?.degreeTitle != null)
+                                        MText(
+                                          text:
+                                              "${user?.education?.degreeLevel?.degreeLevel} , ${user?.education?.degreeTitle}",
+                                          fontSize: foontSize.font16,
+                                          fontFamily:
+                                              foontFamily.tajawalRegular,
+                                        ),
+                                      if (user?.education?.startYear != null ||
+                                          user?.education?.endYear != null)
+                                        MText(
+                                          text:
+                                              "${user?.education?.startYear?.yearMonthDay}_${user?.education?.endYear?.yearMonthDay}",
+                                          fontSize: foontSize.font16,
+                                          fontFamily:
+                                              foontFamily.tajawalRegular,
+                                        ),
                                     ],
                                   ),
                                 ],

@@ -4,7 +4,7 @@ Url urls = Url._private();
 
 class Url {
   //base url
-  final String base = "https://chat.cps-eg.net/api/";
+  final String base = "https://api.pharmatawzeef.com/api/";
 
   //endpoints
 
@@ -51,9 +51,13 @@ class Url {
   final String changeUserApplicationStatus = "company/changeUserJob";
 
   String inCase(String endPoint) {
-    if (loginType.userType == UserType.pharmacy) return 'company$endPoint';
-    return 'user$endPoint';
+    if (loginType.userType == UserType.pharmacist) return 'user$endPoint';
+    return 'company$endPoint';
   }
 
   Url._private();
 }
+
+
+///[abdomohamed00001@gmail.com]
+///[123456789]

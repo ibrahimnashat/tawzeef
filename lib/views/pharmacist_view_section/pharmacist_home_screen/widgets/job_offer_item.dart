@@ -40,19 +40,23 @@ class JobOfferItem extends StatelessWidget {
                       fontColor: coolors.primaryColor,
                       fontFamily: foontFamily.tajawalBold,
                     ),
-                    MText(
-                      text:
-                          "${job.jobCompany?.name} | ${job.state?.state} - ${job.city?.city}",
-                      fontSize: foontSize.font18,
-                      fontColor: coolors.highLight,
-                      maxLines: 2,
-                      maxWidth: context.w * 0.55,
-                    ).mPadding(vertical: spaces.space2),
-                    MText(
-                      text: job.jobType?.jobtype,
-                      fontSize: foontSize.font18,
-                      fontFamily: foontFamily.tajawalBold,
-                    ),
+                    if (job.jobCompany?.name != null ||
+                        job.state?.state != null ||
+                        job.city?.city != null)
+                      MText(
+                        text:
+                            "${job.jobCompany?.name} | ${job.state?.state} - ${job.city?.city}",
+                        fontSize: foontSize.font18,
+                        fontColor: coolors.highLight,
+                        maxLines: 2,
+                        maxWidth: context.w * 0.55,
+                      ).mPadding(vertical: spaces.space2),
+                    if (job.jobType?.jobtype != null)
+                      MText(
+                        text: job.jobType?.jobtype,
+                        fontSize: foontSize.font18,
+                        fontFamily: foontFamily.tajawalBold,
+                      ),
                   ],
                 ),
               ],

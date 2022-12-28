@@ -53,19 +53,23 @@ class SavedItem extends StatelessWidget {
                       fontColor: coolors.primaryColor,
                       fontFamily: foontFamily.tajawalBold,
                     ),
-                    MText(
-                      text:
-                          "${job.jobCompany?.name} | ${job.state?.state} - ${job.city?.city}",
-                      fontColor: coolors.highLight,
-                      maxLines: 2,
-                      maxWidth: context.w * 0.55,
-                      fontSize: foontSize.font16,
-                      fontFamily: foontFamily.tajawalRegular,
-                    ),
-                    MText(
-                      text: job.jobType?.jobtype,
-                      fontSize: foontSize.font16,
-                    ).mPadding(bottom: spaces.space5),
+                    if (job.jobCompany?.name != null ||
+                        job.state?.state != null ||
+                        job.city?.city != null)
+                      MText(
+                        text:
+                            "${job.jobCompany?.name} | ${job.state?.state} - ${job.city?.city}",
+                        fontColor: coolors.highLight,
+                        maxLines: 2,
+                        maxWidth: context.w * 0.55,
+                        fontSize: foontSize.font16,
+                        fontFamily: foontFamily.tajawalRegular,
+                      ),
+                    if (job.jobType?.jobtype != null)
+                      MText(
+                        text: job.jobType?.jobtype,
+                        fontSize: foontSize.font16,
+                      ).mPadding(bottom: spaces.space5),
                     MText(
                       text: job.expired == null ? "Avaliable" : "Expired",
                       fontSize: foontSize.font16,
