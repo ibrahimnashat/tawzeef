@@ -198,7 +198,7 @@ class MyJobScreenDetailsScreen extends StatelessWidget {
                             fontSize: foontSize.font22,
                           ),
                           MText(
-                            text: job.careerLevel!.career,
+                            text: job.careerLevel?.career,
                             fontSize: foontSize.font18,
                             maxWidth: context.w * 0.9,
                             maxLines: 10,
@@ -220,7 +220,7 @@ class MyJobScreenDetailsScreen extends StatelessWidget {
                             fontSize: foontSize.font22,
                           ),
                           MText(
-                            text: job.jobExperience!.jobexperience,
+                            text: job.jobExperience?.jobexperience,
                             fontSize: foontSize.font18,
                             maxWidth: context.w * 0.9,
                             maxLines: 10,
