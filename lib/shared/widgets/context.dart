@@ -13,9 +13,7 @@ extension OnContext on BuildContext {
   dynamic push(Widget widget) {
     return Navigator.push(
       this,
-      MaterialPageRoute(
-        builder: (_) => widget,
-      ),
+      MaterialPageRoute(builder: (_) => widget),
     );
   }
 
@@ -24,9 +22,7 @@ extension OnContext on BuildContext {
   dynamic pushReplacement(Widget widget) {
     return Navigator.pushReplacement(
       this,
-      MaterialPageRoute(
-        builder: (_) => widget,
-      ),
+      MaterialPageRoute(builder: (_) => widget),
     );
   }
 
@@ -65,6 +61,8 @@ extension OnContext on BuildContext {
   }
 
   double get w => mWidth;
+
   double get h => mHeight;
+
   double get textMaxWidth => 450;
 }

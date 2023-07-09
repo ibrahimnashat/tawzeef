@@ -80,18 +80,23 @@ class EditEducationScreenModel extends ChangeNotifier {
     final value = await showOmniDateTimePicker(
       context: context,
       type: OmniDateTimePickerType.date,
-      primaryColor: coolors.primaryColor,
-      backgroundColor: coolors.white,
-      calendarTextColor: Colors.grey[700],
-      tabTextColor: Colors.white,
-      unselectedTabBackgroundColor: Colors.grey[700],
-      buttonTextColor: coolors.black,
+      theme: ThemeData(
+        scaffoldBackgroundColor: coolors.white,
+        primaryColor: coolors.primaryColor,
+        tabBarTheme: TabBarTheme(
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.grey[700],
+        ),
+        buttonTheme: ButtonThemeData(
+          buttonColor: coolors.black,
+        ),
+      ),
       is24HourMode: false,
       isShowSeconds: false,
-      startInitialDate: DateTime.now(),
-      startFirstDate: DateTime(1980),
-      startLastDate: DateTime.now(),
-      borderRadius: const Radius.circular(12),
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1960),
+      lastDate: DateTime.now().add(const Duration(days: 500)),
+      borderRadius: BorderRadius.circular(12.0),
     );
     if (value != null) {
       return value.dateOnly;

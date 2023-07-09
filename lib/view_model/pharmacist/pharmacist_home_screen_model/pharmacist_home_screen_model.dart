@@ -1,12 +1,11 @@
-import 'dart:developer' as dev;
 import 'dart:math';
 
+import 'package:flutter_pagewise/flutter_pagewise.dart';
 import 'package:tawzeef/shared/consts/exports.dart';
 
 class PharmacistHomeScreenModel extends ChangeNotifier {
-  int page = 1;
-  bool isNotFound = false;
   bool isLastPage = false;
+
   int get adIndex {
     return Random().nextInt(ads.length);
   }
@@ -14,8 +13,6 @@ class PharmacistHomeScreenModel extends ChangeNotifier {
   CountryModel? country;
   StateModel? state;
   CityModel? city;
-  List<JobModel> currentJobs = [];
-  final List<JobModel> _jobs = [];
   final List<JobTitleModel> jobTitles = [];
   List<CountryModel> countries = [];
   List<StateModel> states = [];
@@ -28,9 +25,15 @@ class PharmacistHomeScreenModel extends ChangeNotifier {
   final stateServices = GetStatesServices();
   final cityServices = GetCitiesServices();
   final search = TextEditingController();
+  String keyword = '';
+  late PagewiseLoadController<JobModel> pageLoadController;
 
   PharmacistHomeScreenModel(BuildContext context) {
     _loadingFilter(context);
+    pageLoadController = PagewiseLoadController<JobModel>(
+      pageSize: 20,
+      pageFuture: (pageIndex) => getJobs(pageIndex!),
+    );
   }
 
   JobTitleModel? jopTitle;
@@ -62,53 +65,48 @@ class PharmacistHomeScreenModel extends ChangeNotifier {
 
   Future<void> searchJob(BuildContext context) async {
     if (country != null || city != null || state != null || jopTitle != null) {
-      Loader.show(context: context);
-      await searchJobsServices.searchJobs(
-        apiToken: localStorage.logUser.apiToken ?? '',
-        context: context,
-        cityId: city?.id,
-        countryId: country?.id,
-        stateId: state?.id,
-        jobtitleId: jopTitle?.id,
-        onSeccuss: (res, message) {
-          _jobs.clear();
-          Loader.dismiss(context);
-          res.jobs?.forEach((element) {
-            if (!_jobs.contains(element)) _jobs.add(element);
-          });
-          currentJobs = _jobs;
-          isNotFound = _jobs.isEmpty;
-          notifyListeners();
-          context.pop();
-        },
-        onError: (status, error) {
-          Toast.showOnError(context, error);
-        },
+      pageLoadController = PagewiseLoadController<JobModel>(
+        pageSize: 20,
+        pageFuture: (pageIndex) => _searchJobs(pageIndex!),
       );
+      notifyListeners();
+      pageLoadController.reset();
     }
+    context.pop();
   }
 
-  Future<void> getJobs(BuildContext context) async {
-    homeJobsServices.homeJobs(
+  Future<List<JobModel>> _searchJobs(int page) async {
+    List<JobModel> jobs = [];
+    await searchJobsServices.searchJobs(
+      apiToken: localStorage.logUser.apiToken ?? '',
+      cityId: city?.id,
+      countryId: country?.id,
+      stateId: state?.id,
+      jobtitleId: jopTitle?.id,
+      onSeccuss: (res, message) {
+        jobs = res.jobs!;
+      },
+      onError: (status, error) {},
+    );
+    return jobs;
+  }
+
+  Future<List<JobModel>> getJobs(int page) async {
+    List<JobModel> jobs = [];
+    await homeJobsServices.homeJobs(
       apiToken: localStorage.logUser.apiToken ?? '',
       page: page,
-      context: context,
       onSeccuss: (res, message) {
         if (res.jobs?.isNotEmpty ?? false) {
-          res.jobs?.forEach((element) {
-            if (!_jobs.contains(element)) _jobs.add(element);
-          });
+          jobs = res.jobs!;
           res.ads?.forEach((element) {
             if (!ads.contains(element)) ads.add(element);
           });
-          currentJobs = _jobs;
-          page++;
         }
-        isLastPage = _jobs.length % 20 != 0;
-        notifyListeners();
       },
       onError: (status, message) {},
     );
+    return jobs;
   }
 
   Future<void> getJobTitles(BuildContext context) async {
@@ -182,17 +180,8 @@ class PharmacistHomeScreenModel extends ChangeNotifier {
     );
   }
 
-  void makeSearch(keyword) {
-    final res = _jobs.where((element) =>
-        element.jobTitle?.title?.toLowerCase().contains(keyword) ?? false);
-    List<JobModel> result = [];
-    result.addAll(res);
-    if (search.text.isNotEmpty) {
-      currentJobs = result;
-    } else {
-      currentJobs = _jobs;
-    }
-    isNotFound = currentJobs.isEmpty && _jobs.isNotEmpty;
+  void makeSearch(value) {
+    keyword = value;
     notifyListeners();
   }
 

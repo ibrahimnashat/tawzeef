@@ -1,5 +1,5 @@
-import 'package:tawzeef/shared/consts/exports.dart';
 import 'package:tawzeef/main.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 Future<void> _onMessagingBackground(RemoteMessage message) async {
   await FCMConfig.instance.local.displayNotificationFrom(message);

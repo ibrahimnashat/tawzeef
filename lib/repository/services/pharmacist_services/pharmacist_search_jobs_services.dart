@@ -9,11 +9,10 @@ class PharmacistSearchJobsServices {
     int? jobtitleId,
     int? stateId,
     required String apiToken,
-    required BuildContext context,
     required Function(PharmacistSearchResponse, String) onSeccuss,
     required Function(int, String) onError,
   }) async {
-    _api.post(
+    await _api.post(
       endpoint: urls.search,
       toJson: (json) => json.toJson(),
       fromJson: (json) => PharmacistSearchResponse.fromJson(json),

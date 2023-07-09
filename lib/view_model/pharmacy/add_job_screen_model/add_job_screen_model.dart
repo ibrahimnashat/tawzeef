@@ -5,6 +5,7 @@ class AddJobScreenModel extends ChangeNotifier {
   CityModel? city;
   StateModel? state;
   JobShiftModel? jobShift;
+
   // CareerLevelModel? careerLevel;
   JobTypeModel? jobType;
   JobExperienceModel? jobExperience;
@@ -13,6 +14,7 @@ class AddJobScreenModel extends ChangeNotifier {
   final List<StateModel> states = [];
   final List<CityModel> cities = [];
   final List<JobShiftModel> jobShifts = [];
+
   // final List<CareerLevelModel> careerLevels = [];
   final List<JobTypeModel> jobTypes = [];
   final List<JobExperienceModel> jobExperiences = [];
@@ -301,18 +303,23 @@ class AddJobScreenModel extends ChangeNotifier {
     final value = await showOmniDateTimePicker(
       context: context,
       type: OmniDateTimePickerType.date,
-      primaryColor: coolors.primaryColor,
-      backgroundColor: coolors.white,
-      calendarTextColor: Colors.grey[700],
-      tabTextColor: Colors.white,
-      unselectedTabBackgroundColor: Colors.grey[700],
-      buttonTextColor: coolors.black,
+      theme: ThemeData(
+        scaffoldBackgroundColor: coolors.white,
+        primaryColor: coolors.primaryColor,
+        tabBarTheme: TabBarTheme(
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.grey[700],
+        ),
+        buttonTheme: ButtonThemeData(
+          buttonColor: coolors.black,
+        ),
+      ),
       is24HourMode: false,
       isShowSeconds: false,
-      startInitialDate: DateTime.now(),
-      startFirstDate: DateTime(1960),
-      startLastDate: DateTime.now().add(const Duration(days: 500)),
-      borderRadius: const Radius.circular(12),
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1960),
+      lastDate: DateTime.now().add(const Duration(days: 500)),
+      borderRadius: BorderRadius.circular(12.0),
     );
     if (value != null) {
       return value.dateOnly;
