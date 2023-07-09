@@ -7,11 +7,10 @@ class GetCompanyOrPharmacyHomeUsersServices {
   Future<void> homeUsers({
     required String apiToken,
     required int page,
-    required BuildContext context,
     required Function(CompanyOrPharmacyHomeResponse, String) onSeccuss,
     required Function(int, String) onError,
   }) async {
-    _api.post(
+    await _api.post(
       endpoint: urls.home,
       toJson: (json) => json.toJson(),
       fromJson: (json) => CompanyOrPharmacyHomeResponse.fromJson(json),

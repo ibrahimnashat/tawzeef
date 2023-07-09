@@ -1,6 +1,9 @@
+import 'package:tawzeef/shared/widgets/response.dart';
+
 import 'shared/consts/exports.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await localStorage.getPref();
@@ -23,51 +26,29 @@ class _TawzeefAppState extends State<TawzeefApp>
       child: Consumer(builder: (context, ref, child) {
         final controller = ref.watch(
             ChangeNotifierProvider<SettingsScreenModel>((ref) => settings));
-        return MaterialApp(
-          navigatorKey: navigatorKey,
-          locale: controller.locale,
-          localizationsDelegates: [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            controller.delegate,
-          ],
-          supportedLocales: const [
-            Locale("en"),
-            Locale("ar"),
-          ],
-          debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
-          builder: (context, child) {
-            return ResponsiveWrapper.builder(
-              child,
-              maxWidth: 1200,
-              minWidth: 480,
-              defaultScale: true,
-              defaultName: MOBILE,
-              defaultNameLandscape: MOBILE,
-              breakpoints: [
-                const ResponsiveBreakpoint.resize(
-                  480,
-                  name: MOBILE,
-                  scaleFactor: 0.85,
-                ),
-                const ResponsiveBreakpoint.autoScale(
-                  800,
-                  name: TABLET,
-                  scaleFactor: 0.9,
-                ),
-                const ResponsiveBreakpoint.resize(
-                  1000,
-                  name: DESKTOP,
-                ),
-                const ResponsiveBreakpoint.autoScale(
-                  2460,
-                  name: '4K',
-                ),
-              ],
-            );
-          },
+        return MResponsiveWrapper(
+          child: MaterialApp(
+            navigatorKey: navigatorKey,
+            locale: controller.locale,
+            localizationsDelegates: [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              controller.delegate,
+            ],
+            supportedLocales: const [
+              Locale("en"),
+              Locale("ar"),
+            ],
+            debugShowCheckedModeBanner: false,
+            home: SplashScreen(),
+            builder: (context, child) {
+              return MResponsiveWrapper.wrapper(
+                child: child!,
+                context: context,
+              );
+            },
+          ),
         );
       }),
     );

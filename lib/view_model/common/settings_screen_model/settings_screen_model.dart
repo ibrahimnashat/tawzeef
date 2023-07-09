@@ -1,5 +1,5 @@
-import 'package:tawzeef/shared/consts/exports.dart';
 import 'package:tawzeef/languages/localizations.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 SettingsScreenModel settings = SettingsScreenModel._private();
 

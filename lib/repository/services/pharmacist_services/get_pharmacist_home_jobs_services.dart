@@ -6,11 +6,10 @@ class GetPharmacistHomeJobsServices {
   Future<void> homeJobs({
     required int page,
     required String apiToken,
-    required BuildContext context,
     required Function(PharmacistHomeResponse, String) onSeccuss,
     required Function(int, String) onError,
   }) async {
-    _api.post(
+    await _api.post(
       endpoint: urls.home,
       toJson: (json) => json.toJson(),
       fromJson: (json) => PharmacistHomeResponse.fromJson(json),

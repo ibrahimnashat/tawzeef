@@ -1,12 +1,9 @@
 import 'dart:math';
 
+import 'package:flutter_pagewise/flutter_pagewise.dart';
 import 'package:tawzeef/shared/consts/exports.dart';
 
 class CompanyOrPharnamcyHomeScreenModel extends ChangeNotifier {
-  int page = 1;
-  bool isNotFound = false;
-  bool isLastPage = false;
-
   int get adIndex {
     return Random().nextInt(ads.length);
   }
@@ -15,8 +12,6 @@ class CompanyOrPharnamcyHomeScreenModel extends ChangeNotifier {
   CountryModel? country;
   StateModel? state;
   CityModel? city;
-  List<UserModel> currentUsers = [];
-  final List<UserModel> _users = [];
   List<CountryModel> countries = [];
   List<StateModel> states = [];
   List<CityModel> cities = [];
@@ -26,9 +21,15 @@ class CompanyOrPharnamcyHomeScreenModel extends ChangeNotifier {
   final stateServices = GetStatesServices();
   final cityServices = GetCitiesServices();
   final search = TextEditingController();
+  String keyword = '';
+  late PagewiseLoadController<UserModel> pageLoadController;
 
   CompanyOrPharnamcyHomeScreenModel(BuildContext context) {
     _loadingHome(context);
+    pageLoadController = PagewiseLoadController<UserModel>(
+      pageSize: 20,
+      pageFuture: (pageIndex) => getUsers(pageIndex!),
+    );
   }
 
   Future<void> changeCountry(CountryModel country, BuildContext context) async {
@@ -53,52 +54,47 @@ class CompanyOrPharnamcyHomeScreenModel extends ChangeNotifier {
 
   Future<void> searchUsers(BuildContext context) async {
     if (country != null || city != null || state != null) {
-      Loader.show(context: context);
-      await searchJobsServices.searchJobs(
-        apiToken: localStorage.logUser.apiToken ?? '',
-        context: context,
-        cityId: city?.id,
-        countryId: country?.id,
-        stateId: state?.id,
-        onSeccuss: (res, message) {
-          Loader.dismiss(context);
-          _users.clear();
-          res.users?.forEach((element) {
-            if (!_users.contains(element)) _users.add(element);
-          });
-          currentUsers = _users;
-          isNotFound = _users.isEmpty;
-          notifyListeners();
-          context.pop();
-        },
-        onError: (status, error) {
-          Toast.showOnError(context, error);
-        },
+      pageLoadController = PagewiseLoadController<UserModel>(
+        pageSize: 20,
+        pageFuture: (pageIndex) => _getSearch(pageIndex!),
       );
+      notifyListeners();
+      pageLoadController.reset();
     }
+    context.pop();
   }
 
-  Future<void> getUsers(BuildContext context) async {
+  Future<List<UserModel>> _getSearch(int page) async {
+    List<UserModel> users = [];
+    await searchJobsServices.searchJobs(
+      apiToken: localStorage.logUser.apiToken ?? '',
+      cityId: city?.id,
+      countryId: country?.id,
+      stateId: state?.id,
+      onSeccuss: (res, message) {
+        users = res.users!;
+      },
+      onError: (status, error) {},
+    );
+    return users;
+  }
+
+  Future<List<UserModel>> getUsers(int page) async {
+    List<UserModel> users = [];
     homeUsersServices.homeUsers(
       apiToken: localStorage.logUser.apiToken ?? '',
       page: page,
-      context: context,
       onSeccuss: (res, message) {
         if (res.users!.isNotEmpty) {
-          res.users?.forEach((element) {
-            if (!_users.contains(element)) _users.add(element);
-          });
+          users = res.users ?? [];
           res.ads?.forEach((element) {
             if (!ads.contains(element)) ads.add(element);
           });
-          currentUsers = _users;
-          page++;
         }
-        isLastPage = _users.length % 20 != 0;
-        notifyListeners();
       },
       onError: (status, message) {},
     );
+    return users;
   }
 
   Future<void> getCountries(BuildContext context) async {
@@ -161,17 +157,8 @@ class CompanyOrPharnamcyHomeScreenModel extends ChangeNotifier {
     );
   }
 
-  void makeSearch(keyword) {
-    final res = _users.where(
-        (element) => element.name?.toLowerCase().contains(keyword) ?? false);
-    List<UserModel> result = [];
-    result.addAll(res);
-    if (search.text.isNotEmpty) {
-      currentUsers = result;
-    } else {
-      currentUsers = _users;
-    }
-    isNotFound = currentUsers.isEmpty && _users.isNotEmpty;
+  void makeSearch(value) {
+    keyword = value;
     notifyListeners();
   }
 

@@ -1,4 +1,6 @@
+import 'package:flutter_pagewise/flutter_pagewise.dart';
 import 'package:tawzeef/shared/consts/exports.dart';
+
 import 'widgets/job_offer_item.dart';
 import 'widgets/pharmacist_ad_item.dart';
 
@@ -18,6 +20,7 @@ class _PharmacistHomeScreenState extends State<PharmacistHomeScreen> {
   late ChangeNotifierProvider<PharmacistDrawerScreenModel> drawerController =
       ChangeNotifierProvider<PharmacistDrawerScreenModel>(
           (ref) => PharmacistDrawerScreenModel(context));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -174,16 +177,20 @@ class _PharmacistHomeScreenState extends State<PharmacistHomeScreen> {
                     ),
                     child: Consumer(builder: (context, ref, child) {
                       final controller = ref.watch(homeController);
-                      if (controller.isNotFound) return Loader.empty();
-                      return PaginatedList<JobModel>(
+                      return PagewiseListView<JobModel>(
+                        padding: const EdgeInsets.symmetric(vertical: 30.0),
+                        pageLoadController: controller.pageLoadController,
+                        showRetry: true,
                         physics: const BouncingScrollPhysics(),
-                        padding: EdgeInsets.only(top: spaces.space38),
-                        loadingIndicator:
+                        noItemsFoundBuilder: (context) => Loader.empty(),
+                        loadingBuilder: (context) =>
                             Loader.loading().mPadding(all: spaces.space21),
-                        items: controller.currentJobs,
-                        isLastPage: controller.isLastPage,
-                        onLoadMore: (index) => controller.getJobs(context),
-                        builder: (movie, index) {
+                        itemBuilder: (context, job, index) {
+                          final contains =
+                              job.jobTitle?.title?.contains(controller.keyword);
+                          if (!(contains ?? false)) {
+                            return const SizedBox();
+                          }
                           return Column(
                             children: [
                               if (index % 4 == 0 && index != 0)
@@ -192,7 +199,7 @@ class _PharmacistHomeScreenState extends State<PharmacistHomeScreen> {
                                       .elementAt(controller.adIndex),
                                 ),
                               JobOfferItem(
-                                job: controller.currentJobs.elementAt(index),
+                                job: job,
                               ),
                             ],
                           );

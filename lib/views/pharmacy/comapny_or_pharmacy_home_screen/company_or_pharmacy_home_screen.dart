@@ -1,3 +1,4 @@
+import 'package:flutter_pagewise/flutter_pagewise.dart';
 import 'package:tawzeef/shared/consts/exports.dart';
 
 import 'widgets/applicant_user_item.dart';
@@ -18,6 +19,7 @@ class _CompanyOrPharmacyHomeScreenState
       homeController =
       AutoDisposeChangeNotifierProvider<CompanyOrPharnamcyHomeScreenModel>(
           (ref) => CompanyOrPharnamcyHomeScreenModel(context));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,21 +151,23 @@ class _CompanyOrPharmacyHomeScreenState
                     ),
                     child: Consumer(builder: (context, ref, child) {
                       final controller = ref.watch(homeController);
-                      if (controller.isNotFound) return Loader.empty();
-                      return PaginatedList<UserModel>(
+                      return PagewiseListView<UserModel>(
+                        padding: const EdgeInsets.symmetric(vertical: 30.0),
+                        pageLoadController: controller.pageLoadController,
+                        showRetry: true,
                         physics: const BouncingScrollPhysics(),
-                        padding: EdgeInsets.only(top: spaces.space38),
-                        loadingIndicator:
+                        noItemsFoundBuilder: (context) => Loader.empty(),
+                        loadingBuilder: (context) =>
                             Loader.loading().mPadding(all: spaces.space21),
-                        items: controller.currentUsers,
-                        isLastPage: controller.isLastPage,
-                        onLoadMore: (index) => controller.getUsers(context),
-                        builder: (movie, index) {
+                        itemBuilder: (context, user, index) {
+                          final contains =
+                              user.name?.contains(controller.keyword);
+                          if (!(contains ?? false)) {
+                            return const SizedBox();
+                          }
                           return Column(
                             children: [
-                              ApplicantUserItem(
-                                user: controller.currentUsers.elementAt(index),
-                              ),
+                              ApplicantUserItem(user: user),
                               if (index % 3 == 0 && index != 0)
                                 CompanyAdItem(
                                   ad: controller.ads

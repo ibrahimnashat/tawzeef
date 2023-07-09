@@ -6,14 +6,14 @@ class SplashScreenModel extends ChangeNotifier {
       if (localStorage.logUser.name != null &&
           localStorage.logUser.verified == 1) {
         if (loginType.userType == UserType.pharmacist) {
-          context.pushAndRemoveUntil(const PharmacistHomeScreen());
+          context.pushReplacement(const PharmacistHomeScreen());
         } else {
-          context.pushAndRemoveUntil(const CompanyOrPharmacyHomeScreen());
+          context.pushReplacement(const CompanyOrPharmacyHomeScreen());
         }
       } else if (localStorage.logUser.verified == 0) {
-        context.pushAndRemoveUntil(VerifyCodeScreen());
+        context.pushReplacement(VerifyCodeScreen());
       } else {
-        context.pushAndRemoveUntil(LoginTypeScreen());
+        context.pushReplacement(LoginTypeScreen());
       }
     });
   }
