@@ -28,7 +28,7 @@ class EditCompanyOrPharmacyProfileServices {
       toJson: (json) => json.toJson(),
       fromJson: (json) => EditCompanyOrPharmacyProfileResponse.fromJson(json),
       onError: onError,
-      onSeccuss: onSeccuss,
+      onSuccess: onSeccuss,
       request: EditCompanyOrPharmacyProfileRequest(
         apiToken: apiToken,
         cityId: cityId,

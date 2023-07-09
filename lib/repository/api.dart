@@ -1,8 +1,8 @@
 import 'dart:developer';
 
-import 'package:tawzeef/shared/consts/exports.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:tawzeef/shared/consts/exports.dart';
 
 typedef RetrieveFromJson<T> = T Function(Map<String, dynamic> json);
 typedef RetrieveToJson<G> = Map<String, dynamic> Function(G json);
@@ -41,7 +41,7 @@ class Api<T, G> {
     required RetrieveToJson<G> toJson,
     required RetrieveFromJson<T> fromJson,
     required Function(int status, String message) onError,
-    required Function(T response, String message) onSeccuss,
+    required Function(T response, String message) onSuccess,
   }) async {
     final api = http.MultipartRequest(
       'POST',
@@ -69,7 +69,7 @@ class Api<T, G> {
     log(data.toString());
     if (data["message"] != null) message = data["message"];
     if (data["status"] == 200 || data["status"] == 204) {
-      return onSeccuss(fromJson(data), message);
+      return onSuccess(fromJson(data), message);
     } else {
       return onError(data["status"], message);
     }

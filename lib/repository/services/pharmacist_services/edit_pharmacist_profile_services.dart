@@ -24,7 +24,7 @@ class EditPharmacistProfileServices {
       toJson: (json) => json.toJson(),
       fromJson: (json) => EditPharmacistProfileResponse.fromJson(json),
       onError: onError,
-      onSeccuss: onSeccuss,
+      onSuccess: onSeccuss,
       request: EditOfficerProfileRequest(
         apiToken: apiToken,
         cityId: cityId,
