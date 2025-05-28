@@ -2,7 +2,18 @@ import 'package:tawzeef/main.dart';
 import 'package:tawzeef/shared/consts/exports.dart';
 
 Future<void> _onMessagingBackground(RemoteMessage message) async {
-  await FCMConfig.instance.local.displayNotificationFrom(message);
+  await FCMConfig.instance.local.displayNotificationFrom(
+    message,
+    (androidNotificationDetails, remoteMessage) async {
+      return androidNotificationDetails;
+    },
+    (darwinNotificationDetails, remoteMessage) async {
+      return darwinNotificationDetails;
+    },
+    (darwinNotificationDetails, remoteMessage) async {
+      return darwinNotificationDetails;
+    },
+  );
 }
 
 FCMNotificationModel fCMNotification = FCMNotificationModel._private();

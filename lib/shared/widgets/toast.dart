@@ -1,5 +1,4 @@
 import 'package:motion_toast/motion_toast.dart';
-import 'package:motion_toast/resources/arrays.dart';
 
 import '../consts/exports.dart';
 
@@ -14,7 +13,6 @@ class Toast {
       icon: icon,
       primaryColor: Colors.white,
       secondaryColor: color ?? coolors.primaryColor,
-      backgroundType: BackgroundType.solid,
       barrierColor: Colors.black12,
       title: Text(
         context.localization?.note ?? '',

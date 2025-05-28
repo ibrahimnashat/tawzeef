@@ -27,16 +27,14 @@ class MResponsiveWrapper extends StatelessWidget {
   }) {
     return MaxWidthBox(
       maxWidth: 1200,
-      background: Container(
-        color: const Color(0xFFF5F5F5),
-      ),
+      backgroundColor: const Color(0xFFF5F5F5),
       child: ResponsiveScaledBox(
         width: ResponsiveValue<double>(
           context,
           conditionalValues: [
-            Condition.equals(name: MOBILE, value: 480),
-            Condition.between(start: 800, end: 1000, value: 800),
-            Condition.between(start: 1001, end: 1200, value: 1001),
+            const Condition.equals(name: MOBILE, value: 480),
+            const Condition.between(start: 800, end: 1000, value: 800),
+            const Condition.between(start: 1001, end: 1200, value: 1001),
           ],
         ).value,
         child: BouncingScrollWrapper.builder(
