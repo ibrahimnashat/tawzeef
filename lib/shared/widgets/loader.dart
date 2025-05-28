@@ -15,8 +15,7 @@ class Loader {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                AwesomeLoader(
-                  loaderType: AwesomeLoader.AwesomeLoader3,
+                CircularProgressIndicator(
                   color: coolors.primaryColor,
                 ),
               ],
@@ -40,8 +39,7 @@ class Loader {
 
   static Widget loading() {
     return Center(
-      child: AwesomeLoader(
-        loaderType: AwesomeLoader.AwesomeLoader3,
+      child: CircularProgressIndicator(
         color: coolors.primaryColor,
       ),
     );

@@ -3,7 +3,6 @@ export 'dart:convert';
 //---- packages ----
 export 'dart:io';
 
-export 'package:awesome_loader_null_safety/awesome_loader_null_safety.dart';
 export 'package:bottom_picker/bottom_picker.dart';
 export 'package:bouncing_widget/bouncing_widget.dart';
 export 'package:custom_pop_up_menu/custom_pop_up_menu.dart';
